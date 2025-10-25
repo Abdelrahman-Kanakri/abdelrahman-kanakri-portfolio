@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 215 28% 8%;
+    --foreground: 180 10% 95%;
+
+    --card: 217 25% 12%;
+    --card-foreground: 180 10% 95%;
+
+    --popover: 217 25% 12%;
+    --popover-foreground: 180 10% 95%;
+
+    --primary: 188 95% 65%;
+    --primary-foreground: 215 28% 8%;
+
+    --secondary: 217 25% 15%;
+    --secondary-foreground: 180 10% 95%;
+
+    --muted: 217 25% 18%;
+    --muted-foreground: 180 10% 65%;
+
+    --accent: 188 95% 65%;
+    --accent-foreground: 215 28% 8%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 180 10% 95%;
+
+    --border: 217 25% 20%;
+    --input: 217 25% 15%;
+    --ring: 188 95% 65%;
+
+    --radius: 0.75rem;
+
+    /* Custom gradient tokens */
+    --gradient-start: 215 28% 8%;
+    --gradient-end: 188 95% 40%;
+    
+    /* Header blur */
+    --header-blur: 217 25% 12%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    background: linear-gradient(135deg, hsl(var(--gradient-start)) 0%, hsl(215 28% 10%) 50%, hsl(var(--gradient-end)) 100%);
+    background-attachment: fixed;
+    font-family: 'Inter', 'Poppins', sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+  }
+  
+  .card-hover {
+    @apply transition-all duration-500 hover:scale-105 hover:shadow-2xl;
+  }
+
+  /* Prevent scrolling when mobile menu is open */
+  .no-scroll {
+    @apply overflow-hidden;
+  }
+}
