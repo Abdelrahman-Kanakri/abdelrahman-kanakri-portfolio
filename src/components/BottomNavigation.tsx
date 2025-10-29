@@ -1,7 +1,7 @@
 import { memo, useCallback, useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Home, User, Briefcase, FolderOpen, Mail } from 'lucide-react';
-import clsx from 'clsx'; // Using clsx to match the original file's import, though it's not used in the new snippet. You can remove if not needed.
+import clsx from 'clsx';
 
 const NAV_ITEMS = [
   { id: 'home', label: 'Home', icon: Home },
@@ -98,14 +98,9 @@ const BottomNavigation = memo(() => {
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.8 }}
                       transition={{
-                        // --- THIS IS THE CHANGED PART ---
                         type: 'tween',
                         ease: 'easeInOut',
                         duration: 0.3,
-                        // --- Original spring animation ---
-                        // type: 'spring',
-                        // stiffness: 400,
-                        // damping: 25,
                       }}
                     />
                   )}
@@ -169,4 +164,3 @@ const BottomNavigation = memo(() => {
 BottomNavigation.displayName = 'BottomNavigation';
 
 export default BottomNavigation;
-
