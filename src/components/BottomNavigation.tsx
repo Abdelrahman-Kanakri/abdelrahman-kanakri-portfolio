@@ -27,14 +27,14 @@ const BottomNavigation = memo(() => {
           }
         });
         
-        // Update active section only if we found a highly visible section
-        if (activeEntry && maxRatio > 0.2) {
+        // Update active section if we found a visible section
+        if (activeEntry && maxRatio > 0.1) {
           setActiveSection(activeEntry.target.id);
         }
       },
       {
         threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0],
-        rootMargin: '-10% 0px -10% 0px',
+        rootMargin: '-20% 0px -50% 0px',
       }
     );
 

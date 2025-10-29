@@ -63,7 +63,7 @@ const PageProgress = memo(() => {
       transition={{ duration: 0.5, delay: 0.3 }}
     >
       {SECTIONS.map((section, index) => (
-        <div key={section.id} className="flex items-center justify-end gap-4 group w-full">
+        <div key={section.id} className="flex items-center justify-end gap-4 group">
           {/* Label - appears on hover */}
           <motion.span 
             className={`text-sm font-medium whitespace-nowrap transition-colors duration-300 ${
@@ -79,7 +79,7 @@ const PageProgress = memo(() => {
           {/* Dot indicator */}
           <motion.button
             onClick={() => scrollToSection(section.id)}
-            className="relative flex items-center justify-center flex-shrink-0"
+            className="relative flex items-center justify-center flex-shrink-0 w-12 h-12"
             whileHover={{ scale: 1.2 }}
             whileTap={{ scale: 0.9 }}
             aria-label={`Go to ${section.label}`}

@@ -69,7 +69,7 @@ const About = memo(() => {
         </motion.div>
 
         {/* Education */}
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-5xl mx-auto px-4">
         <motion.div
           initial={{ y: 30, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
@@ -77,8 +77,9 @@ const About = memo(() => {
           transition={{ duration: 0.5 }}
           whileHover={{ scale: 1.01, y: -2 }}
           whileTap={{ scale: 0.99 }}
+          className="w-full"
         >
-          <Card className="mb-8 sm:mb-10 lg:mb-12 border-accent/20 bg-card/50 backdrop-blur-sm transition-all duration-300 hover:border-accent/40 hover:shadow-lg hover:shadow-accent/10">
+          <Card className="mb-8 sm:mb-10 lg:mb-12 border-accent/20 bg-card/50 backdrop-blur-sm transition-all duration-300 hover:border-accent/40 hover:shadow-lg hover:shadow-accent/10 w-full">
             <CardContent className="p-5 sm:p-6 lg:p-8">
             <div className="flex flex-col sm:flex-row items-start gap-3 sm:gap-4">
               <div className="p-2.5 sm:p-3 bg-accent/10 rounded-lg">
@@ -99,7 +100,7 @@ const About = memo(() => {
 
         {/* Work Experience */}
         <motion.div 
-          className="mb-10 sm:mb-12 lg:mb-16"
+          className="mb-10 sm:mb-12 lg:mb-16 px-4"
           initial={{ y: 30, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true, margin: "-50px" }}
@@ -109,7 +110,7 @@ const About = memo(() => {
             <Briefcase className="h-6 w-6 sm:h-8 sm:w-8 text-accent" />
             <h3 className="text-2xl sm:text-3xl font-bold text-foreground">Work Experience</h3>
           </div>
-          <div className="space-y-4 sm:space-y-6">
+          <div className="space-y-4 sm:space-y-6 w-full">
             {EXPERIENCES.map((exp, index) => (
               <motion.div
                 key={index}
@@ -119,8 +120,9 @@ const About = memo(() => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 whileHover={{ scale: 1.01, x: 4 }}
                 whileTap={{ scale: 0.99 }}
+                className="w-full"
               >
-                <Card className="border-accent/20 bg-card/50 backdrop-blur-sm transition-all duration-300 hover:border-accent/40 hover:shadow-lg hover:shadow-accent/10">
+                <Card className="border-accent/20 bg-card/50 backdrop-blur-sm transition-all duration-300 hover:border-accent/40 hover:shadow-lg hover:shadow-accent/10 w-full">
                   <CardContent className="p-4 sm:p-5 lg:p-6">
                   <div className="space-y-2.5 sm:space-y-3">
                     <div>
@@ -147,7 +149,7 @@ const About = memo(() => {
 
         {/* Skills */}
         <motion.div 
-          className="space-y-6 sm:space-y-8 max-w-5xl mx-auto"
+          className="space-y-6 sm:space-y-8 max-w-5xl mx-auto px-4"
           initial={{ y: 30, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true, margin: "-50px" }}
@@ -158,7 +160,7 @@ const About = memo(() => {
             <h3 className="text-2xl sm:text-3xl font-bold text-foreground">Skills & Expertise</h3>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 w-full">
             {/* Technical Skills */}
             <motion.div 
               initial={{ scale: 0.95, opacity: 0 }}
