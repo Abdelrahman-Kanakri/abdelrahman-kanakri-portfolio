@@ -1,56 +1,51 @@
 import { useState, memo, useCallback, useEffect, useRef } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
+// --- FIX: Corrected import path for context hook ---
+import { useAppContext } from "./AppContext";
 
 const NAV_LINKS = [
   { id: "home", label: "Home" },
   { id: "about", label: "About" },
   { id: "services", label: "Services" },
-  { id: "projects", label: "Portfolio" },
+  { id: "projects", label: "Portfolio" }, // This label is "Portfolio" but id is "projects", which is correct
   { id: "contact", label: "Contact" },
 ] as const;
 
-const SECTIONS = ["home", "about", "services", "projects", "contact"] as const;
+type SectionId = (typeof NAV_LINKS)[number]['id'];
 
 const Navigation = memo(() => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("home");
+  // --- FIX: Get state and functions from our context ---
+  const { activeSection, scrollToSection } = useAppContext();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
   
   const lastScrollY = useRef(0);
   const ticking = useRef(false);
 
-  // High-performance scroll tracking with Framer Motion
   const { scrollY } = useScroll();
 
-  // Detect scroll position and direction with Framer Motion useScroll
+  // This logic is just for hiding the nav on scroll, so it's fine to keep it.
   useMotionValueEvent(scrollY, "change", (latest) => {
     if (!ticking.current) {
       window.requestAnimationFrame(() => {
         const currentScrollY = latest;
         const previousScrollY = lastScrollY.current;
         
-        // Update blur effect state (50px threshold)
         setIsScrolled(currentScrollY > 50);
         
-        // Hide-on-scroll logic for mobile ONLY (below lg breakpoint)
-        // On mobile: scrolling down hides, scrolling up shows
         if (window.innerWidth < 1024) {
           if (currentScrollY > previousScrollY && currentScrollY > 100) {
-            // Scrolling DOWN - hide nav on mobile
             setIsHidden(true);
           } else if (currentScrollY < previousScrollY) {
-            // Scrolling UP - show nav
             setIsHidden(false);
           }
         } else {
-          // Desktop: always show
           setIsHidden(false);
         }
         
-        // Update active section
-        updateActiveSection();
+        // --- Active section detection is REMOVED (handled in context) ---
         
         lastScrollY.current = currentScrollY;
         ticking.current = false;
@@ -59,27 +54,7 @@ const Navigation = memo(() => {
     }
   });
 
-  // Active section detection (optimized)
-  const updateActiveSection = useCallback(() => {
-    const scrollPosition = window.scrollY + window.innerHeight / 2;
-    
-    for (let i = SECTIONS.length - 1; i >= 0; i--) {
-      const section = SECTIONS[i];
-      const element = document.getElementById(section);
-      if (element) {
-        const { offsetTop } = element;
-        if (scrollPosition >= offsetTop) {
-          setActiveSection(section);
-          break;
-        }
-      }
-    }
-  }, []);
-
-  // Initial active section check
-  useEffect(() => {
-    updateActiveSection();
-  }, [updateActiveSection]);
+  // --- All active section useEffects/callbacks are REMOVED ---
 
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
@@ -93,20 +68,11 @@ const Navigation = memo(() => {
     };
   }, [isMobileMenuOpen]);
 
-  const scrollToSection = useCallback((id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      const offset = 80; // Account for fixed header
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth',
-      });
-    }
+  // --- FIX: Create a simple handler to call context function ---
+  const handleScroll = (id: SectionId) => {
+    scrollToSection(id, 80); // 80px offset for desktop nav
     setIsMobileMenuOpen(false);
-  }, []);
+  };
 
   const toggleMobileMenu = useCallback(() => {
     setIsMobileMenuOpen(prev => !prev);
@@ -114,7 +80,7 @@ const Navigation = memo(() => {
 
   return (
     <>
-      {/* Desktop Navigation - Always visible sticky header */}
+      {/* Desktop Navigation */}
       <motion.header
         className={`fixed top-0 left-0 right-0 z-50 hidden lg:block transition-colors duration-300 ${
           isScrolled
@@ -129,7 +95,7 @@ const Navigation = memo(() => {
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <motion.button
-              onClick={() => scrollToSection('home')}
+              onClick={() => handleScroll('home')}
               className="text-2xl font-bold text-gradient hover:scale-105 transition-transform"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -142,8 +108,9 @@ const Navigation = memo(() => {
               {NAV_LINKS.map((link) => (
                 <motion.button
                   key={link.id}
-                  onClick={() => scrollToSection(link.id)}
+                  onClick={() => handleScroll(link.id)}
                   className={`relative text-foreground/80 hover:text-accent font-medium transition-colors duration-300 after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-0 after:bg-accent after:transition-all after:duration-300 hover:after:w-full ${
+                    // Active state now comes from context
                     activeSection === link.id ? 'text-accent after:w-full' : ''
                   }`}
                   whileHover={{ scale: 1.05 }}
@@ -157,7 +124,7 @@ const Navigation = memo(() => {
         </nav>
       </motion.header>
 
-      {/* Mobile/Tablet Navigation - Hide on scroll down, show on scroll up */}
+      {/* Mobile/Tablet Navigation */}
       <motion.header
         className={`fixed top-0 left-0 right-0 z-50 lg:hidden transition-colors duration-300 ${
           isScrolled
@@ -179,7 +146,7 @@ const Navigation = memo(() => {
           <div className="flex items-center justify-between h-16 sm:h-20">
             {/* Logo */}
             <motion.button
-              onClick={() => scrollToSection('home')}
+              onClick={() => handleScroll('home')}
               className="text-xl sm:text-2xl font-bold text-gradient"
               whileTap={{ scale: 0.95 }}
             >
@@ -233,8 +200,9 @@ const Navigation = memo(() => {
                 {NAV_LINKS.map((link, index) => (
                   <motion.button
                     key={link.id}
-                    onClick={() => scrollToSection(link.id)}
+                    onClick={() => handleScroll(link.id)}
                     className={`text-left px-4 sm:px-6 py-3 sm:py-4 rounded-xl font-medium transition-all duration-300 ${
+                      // Active state now comes from context
                       activeSection === link.id
                         ? 'bg-accent text-background shadow-lg shadow-accent/30'
                         : 'bg-accent/5 text-foreground hover:bg-accent/10'
@@ -259,3 +227,4 @@ const Navigation = memo(() => {
 Navigation.displayName = 'Navigation';
 
 export default Navigation;
+

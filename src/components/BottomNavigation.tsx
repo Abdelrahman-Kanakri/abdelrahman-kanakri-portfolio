@@ -37,7 +37,8 @@ const BottomNavigation = memo(() => {
       },
       {
         threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0],
-        rootMargin: '-20% 0px -50% 0px',
+        // --- FIX HERE: This creates a more stable, centered detection area ---
+        rootMargin: '-25% 0px -25% 0px',
       }
     );
 
@@ -98,9 +99,14 @@ const BottomNavigation = memo(() => {
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.8 }}
                       transition={{
+                        // --- THIS IS THE CHANGED PART ---
                         type: 'tween',
                         ease: 'easeInOut',
                         duration: 0.3,
+                        // --- Original spring animation ---
+                        // type: 'spring',
+                        // stiffness: 400,
+                        // damping: 25,
                       }}
                     />
                   )}
@@ -164,3 +170,5 @@ const BottomNavigation = memo(() => {
 BottomNavigation.displayName = 'BottomNavigation';
 
 export default BottomNavigation;
+
+
