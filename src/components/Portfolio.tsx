@@ -137,7 +137,7 @@ const Portfolio = memo(() => {
     <section id="projects" className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 bg-card/30">
       <div className="container mx-auto max-w-7xl">
         <motion.div 
-          className="text-center mb-16 sm:mb-20 lg:mb-24 space-y-3 sm:space-y-4"
+          className="text-center mb-8 sm:mb-10 lg:mb-12 space-y-3 sm:space-y-4"
           initial={{ y: 20, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true, margin: "-50px" }}
@@ -151,7 +151,7 @@ const Portfolio = memo(() => {
           </p>
         </motion.div>
 
-        <div className="relative overflow-visible px-4 sm:px-8 md:px-12 lg:px-16 pt-20 sm:pt-24">
+        <div className="relative overflow-visible px-4 sm:px-8 md:px-12 lg:px-16 pt-8 sm:pt-12">
           {/* Navigation Buttons - Side positioned */}
           <Button
             variant="outline"

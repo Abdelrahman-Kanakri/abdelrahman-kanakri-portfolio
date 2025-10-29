@@ -59,12 +59,13 @@ const Services = memo(() => {
           </p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 justify-items-center px-4">
           {SERVICES.map((service, index) => {
             const Icon = service.icon;
             return (
               <motion.div
                 key={index}
+                className="w-full max-w-md"
                 initial={{ y: 30, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 viewport={{ once: true, margin: "-50px" }}
