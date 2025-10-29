@@ -151,7 +151,7 @@ const Portfolio = memo(() => {
           </p>
         </motion.div>
 
-        <div className="relative overflow-visible px-4 sm:px-8 md:px-12 lg:px-16 pt-4">
+        <div className="relative overflow-visible px-4 sm:px-8 md:px-12 lg:px-16 pt-12 sm:pt-16">
           {/* Navigation Buttons - Side positioned */}
           <Button
             variant="outline"
@@ -191,7 +191,7 @@ const Portfolio = memo(() => {
             className="w-full"
             style={{ overflow: 'visible' }}
           >
-            <CarouselContent className="-ml-2 md:-ml-4 overflow-visible">
+            <CarouselContent className="-ml-2 md:-ml-4 overflow-visible pt-4 pb-4">
               {PROJECTS.map((project, index) => {
                 const isCurrent = current === index;
                 const distance = Math.abs(current - index);
