@@ -1,6 +1,7 @@
 import { memo, useCallback, useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Home, User, Briefcase, FolderOpen, Mail } from 'lucide-react';
+import clsx from 'clsx'; // Using clsx to match the original file's import, though it's not used in the new snippet. You can remove if not needed.
 
 const NAV_ITEMS = [
   { id: 'home', label: 'Home', icon: Home },
@@ -10,26 +11,28 @@ const NAV_ITEMS = [
   { id: 'contact', label: 'Contact', icon: Mail },
 ] as const;
 
+type NavItemId = (typeof NAV_ITEMS)[number]['id'];
+
 const BottomNavigation = memo(() => {
-  const [activeSection, setActiveSection] = useState('home');
+  const [activeSection, setActiveSection] = useState<NavItemId>('home');
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         // Find the entry with the highest intersection ratio
         let maxRatio = 0;
-        let activeEntry = null;
-        
+        let activeEntry: IntersectionObserverEntry | null = null;
+
         entries.forEach((entry) => {
           if (entry.isIntersecting && entry.intersectionRatio > maxRatio) {
             maxRatio = entry.intersectionRatio;
             activeEntry = entry;
           }
         });
-        
+
         // Update active section only if we found a highly visible section
         if (activeEntry && maxRatio > 0.1) {
-          setActiveSection(activeEntry.target.id);
+          setActiveSection(activeEntry.target.id as NavItemId);
         }
       },
       {
@@ -46,7 +49,7 @@ const BottomNavigation = memo(() => {
     return () => observer.disconnect();
   }, []);
 
-  const scrollToSection = useCallback((id: string) => {
+  const scrollToSection = useCallback((id: NavItemId) => {
     const element = document.getElementById(id);
     if (element) {
       const offset = 0;
@@ -75,7 +78,7 @@ const BottomNavigation = memo(() => {
             const isActive = activeSection === item.id;
 
             return (
-                <motion.button
+              <motion.button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
                 className="relative flex flex-col items-center justify-center flex-1 py-2.5 px-1 min-w-0"
@@ -95,9 +98,14 @@ const BottomNavigation = memo(() => {
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.8 }}
                       transition={{
-                        type: 'spring',
-                        stiffness: 400,
-                        damping: 25,
+                        // --- THIS IS THE CHANGED PART ---
+                        type: 'tween',
+                        ease: 'easeInOut',
+                        duration: 0.3,
+                        // --- Original spring animation ---
+                        // type: 'spring',
+                        // stiffness: 400,
+                        // damping: 25,
                       }}
                     />
                   )}
@@ -112,11 +120,14 @@ const BottomNavigation = memo(() => {
                   transition={{ duration: 0.2 }}
                 >
                   <Icon
-                    className={`h-6 w-6 transition-colors duration-200 ${
-                      isActive ? 'text-accent drop-shadow-[0_0_8px_hsl(var(--accent)/0.5)]' : 'text-foreground/60'
-                    }`}
+                    className={clsx(
+                      'h-6 w-6 transition-colors duration-200',
+                      isActive
+                        ? 'text-accent drop-shadow-[0_0_8px_hsl(var(--accent)/0.5)]'
+                        : 'text-foreground/60'
+                    )}
                   />
-                  
+
                   {/* Active dot indicator */}
                   <AnimatePresence>
                     {isActive && (
@@ -133,9 +144,10 @@ const BottomNavigation = memo(() => {
 
                 {/* Label */}
                 <motion.span
-                  className={`text-[11px] font-semibold mt-1 transition-colors duration-200 ${
+                  className={clsx(
+                    'text-[11px] font-semibold mt-1 transition-colors duration-200',
                     isActive ? 'text-accent' : 'text-foreground/50'
-                  }`}
+                  )}
                   animate={{
                     opacity: isActive ? 1 : 0.6,
                     scale: isActive ? 1.05 : 0.9,
@@ -157,3 +169,4 @@ const BottomNavigation = memo(() => {
 BottomNavigation.displayName = 'BottomNavigation';
 
 export default BottomNavigation;
+
