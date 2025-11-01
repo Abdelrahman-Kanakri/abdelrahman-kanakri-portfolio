@@ -66,8 +66,8 @@ const Contact = memo(() => {
           <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto px-4">Let's collaborate on your next data science or AI project</p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-5 gap-6 sm:gap-8 lg:gap-12 justify-items-center lg:justify-items-stretch">
-          <motion.div className="lg:col-span-2 space-y-4 sm:space-y-6 w-full max-w-md lg:max-w-none" initial={{ x: -30, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
+        <div className="grid lg:grid-cols-5 gap-6 sm:gap-8 lg:gap-12">
+          <motion.div className="lg:col-span-2 space-y-4 sm:space-y-6 w-full max-w-md mx-auto lg:mx-0 lg:max-w-none" initial={{ x: -30, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
             {CONTACT_INFO.map((item, index) => {
               const Icon = item.icon;
               return (
@@ -88,7 +88,7 @@ const Contact = memo(() => {
             })}
           </motion.div>
 
-          <motion.div className="lg:col-span-3 w-full max-w-md lg:max-w-none" initial={{ x: 30, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
+          <motion.div className="lg:col-span-3 w-full max-w-md mx-auto lg:mx-0 lg:max-w-none" initial={{ x: 30, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
             <Card className="border-accent/20 bg-card/50 backdrop-blur-sm transition-all duration-300 hover:border-accent/40 hover:shadow-lg hover:shadow-accent/10">
               <CardContent className="p-5 sm:p-6 lg:p-8">
                 <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
