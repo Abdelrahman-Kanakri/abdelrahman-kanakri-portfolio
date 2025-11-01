@@ -1,5 +1,4 @@
-import { useState, memo, useCallback, useEffect, useRef } from "react";
-import { Menu, X } from "lucide-react";
+import { useState, memo, useCallback, useRef } from "react";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 // --- FIX: Corrected import path for context hook ---
 import { useAppContext } from "./AppContext";
@@ -15,7 +14,6 @@ const NAV_LINKS = [
 type SectionId = (typeof NAV_LINKS)[number]['id'];
 
 const Navigation = memo(() => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   // --- FIX: Get state and functions from our context ---
   const { activeSection, scrollToSection } = useAppContext();
   const [isScrolled, setIsScrolled] = useState(false);
@@ -54,29 +52,10 @@ const Navigation = memo(() => {
     }
   });
 
-  // --- All active section useEffects/callbacks are REMOVED ---
-
-  // Prevent body scroll when mobile menu is open
-  useEffect(() => {
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [isMobileMenuOpen]);
-
   // --- FIX: Create a simple handler to call context function ---
   const handleScroll = (id: SectionId) => {
     scrollToSection(id, 80); // 80px offset for desktop nav
-    setIsMobileMenuOpen(false);
   };
-
-  const toggleMobileMenu = useCallback(() => {
-    setIsMobileMenuOpen(prev => !prev);
-  }, []);
 
   return (
     <>
@@ -124,7 +103,7 @@ const Navigation = memo(() => {
         </nav>
       </motion.header>
 
-      {/* Mobile/Tablet Navigation */}
+      {/* Mobile/Tablet Navigation - Simplified (no hamburger menu) */}
       <motion.header
         className={`fixed top-0 left-0 right-0 z-50 lg:hidden transition-colors duration-300 ${
           isScrolled
@@ -143,8 +122,8 @@ const Navigation = memo(() => {
         style={{ willChange: 'transform' }}
       >
         <nav className="container mx-auto px-4 sm:px-6">
-          <div className="flex items-center justify-between h-16 sm:h-20">
-            {/* Logo */}
+          <div className="flex items-center justify-center h-16 sm:h-20">
+            {/* Logo - Centered */}
             <motion.button
               onClick={() => handleScroll('home')}
               className="text-xl sm:text-2xl font-bold text-gradient"
@@ -152,74 +131,9 @@ const Navigation = memo(() => {
             >
               ABK
             </motion.button>
-
-            {/* Mobile Menu Button */}
-            <motion.button
-              onClick={toggleMobileMenu}
-              className="p-2 rounded-lg hover:bg-accent/10 transition-colors"
-              aria-label="Toggle menu"
-              whileTap={{ scale: 0.9 }}
-            >
-              {isMobileMenuOpen ? (
-                <X className="h-6 w-6 text-accent" />
-              ) : (
-                <Menu className="h-6 w-6 text-accent" />
-              )}
-            </motion.button>
           </div>
         </nav>
       </motion.header>
-
-      {/* Mobile Menu Overlay */}
-      {isMobileMenuOpen && (
-        <motion.div
-          className="fixed inset-0 z-40 lg:hidden"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-        >
-          {/* Backdrop */}
-          <motion.div
-            className="absolute inset-0 bg-background/80 backdrop-blur-md"
-            onClick={() => setIsMobileMenuOpen(false)}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          />
-
-          {/* Menu Content */}
-          <motion.div
-            className="absolute top-16 sm:top-20 left-0 right-0 mx-4 sm:mx-6"
-            initial={{ y: -20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: -20, opacity: 0 }}
-            transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-          >
-            <div className="bg-card/95 backdrop-blur-xl border border-accent/20 rounded-2xl shadow-2xl p-4 sm:p-6">
-              <div className="flex flex-col gap-2 sm:gap-3">
-                {NAV_LINKS.map((link, index) => (
-                  <motion.button
-                    key={link.id}
-                    onClick={() => handleScroll(link.id)}
-                    className={`text-left px-4 sm:px-6 py-3 sm:py-4 rounded-xl font-medium transition-all duration-300 ${
-                      // Active state now comes from context
-                      activeSection === link.id
-                        ? 'bg-accent text-background shadow-lg shadow-accent/30'
-                        : 'bg-accent/5 text-foreground hover:bg-accent/10'
-                    }`}
-                    initial={{ x: -20, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ delay: index * 0.05 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    {link.label}
-                  </motion.button>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-        </motion.div>
-      )}
     </>
   );
 });

@@ -134,7 +134,7 @@ const Portfolio = memo(() => {
   }, [api]);
 
   return (
-    <section id="projects" className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 bg-card/30">
+    <section id="projects" className="py-12 sm:py-16 lg:py-20 px-6 sm:px-8 bg-card/30">
       <div className="container mx-auto max-w-7xl">
         <motion.div 
           className="text-center mb-8 sm:mb-10 lg:mb-12 space-y-3 sm:space-y-4"

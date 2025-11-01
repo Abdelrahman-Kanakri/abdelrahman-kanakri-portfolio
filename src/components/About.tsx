@@ -53,8 +53,8 @@ const SKILLS = {
 const About = memo(() => {
 
   return (
-    <section id="about" className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 bg-card/30">
-      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section id="about" className="py-12 sm:py-16 lg:py-20 px-6 sm:px-8 bg-card/30">
+      <div className="container mx-auto max-w-7xl">
         <motion.div 
           className="text-center mb-10 sm:mb-12 lg:mb-16 space-y-3 sm:space-y-4"
           initial={{ y: 20, opacity: 0 }}

@@ -59,7 +59,7 @@ const Contact = memo(() => {
   }, []);
 
   return (
-    <section id="contact" className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6">
+    <section id="contact" className="py-12 sm:py-16 lg:py-20 px-6 sm:px-8">
       <div className="container mx-auto max-w-6xl">
         <motion.div className="text-center mb-10 sm:mb-12 lg:mb-16 space-y-3 sm:space-y-4" initial={{ y: 20, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gradient">Get In Touch</h2>

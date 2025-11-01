@@ -42,7 +42,7 @@ const SERVICES = [
 const Services = memo(() => {
 
   return (
-    <section id="services" className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6">
+    <section id="services" className="py-12 sm:py-16 lg:py-20 px-6 sm:px-8">
       <div className="container mx-auto max-w-7xl">
         <motion.div 
           className="text-center mb-10 sm:mb-12 lg:mb-16 space-y-3 sm:space-y-4"

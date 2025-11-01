@@ -1,5 +1,5 @@
 import { memo, useState, useCallback, useRef } from 'react';
-import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
+import { motion, useScroll, useMotionValueEvent, AnimatePresence } from 'framer-motion';
 
 const SECTIONS = [
   { id: 'home', label: 'Home' },
@@ -11,6 +11,7 @@ const SECTIONS = [
 
 const PageProgress = memo(() => {
   const [activeSection, setActiveSection] = useState(0);
+  const [hoveredDot, setHoveredDot] = useState<string | null>(null);
   const ticking = useRef(false);
   
   // High-performance scroll tracking with Framer Motion
@@ -63,22 +64,29 @@ const PageProgress = memo(() => {
       transition={{ duration: 0.5, delay: 0.3 }}
     >
       {SECTIONS.map((section, index) => (
-        <div key={section.id} className="flex items-center justify-end gap-4 group w-full">
-          {/* Label - appears on hover */}
-          <motion.span 
-            className={`text-sm font-medium whitespace-nowrap transition-colors duration-300 ${
-              activeSection === index ? 'text-accent' : 'text-foreground/60'
-            }`}
-            initial={{ opacity: 0, x: 10 }}
-            whileHover={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.2 }}
-          >
-            {section.label}
-          </motion.span>
+        <div key={section.id} className="flex items-center justify-end gap-4 group w-full relative">
+          {/* Tooltip - appears on hover */}
+          <AnimatePresence>
+            {hoveredDot === section.id && (
+              <motion.div
+                className="absolute right-full mr-6 bg-card/95 backdrop-blur-sm border border-accent/30 px-3 py-1.5 rounded-lg shadow-lg"
+                initial={{ opacity: 0, x: 10, scale: 0.9 }}
+                animate={{ opacity: 1, x: 0, scale: 1 }}
+                exit={{ opacity: 0, x: 10, scale: 0.9 }}
+                transition={{ duration: 0.2 }}
+              >
+                <span className="text-sm font-medium text-accent whitespace-nowrap">
+                  {section.label}
+                </span>
+              </motion.div>
+            )}
+          </AnimatePresence>
           
           {/* Dot indicator */}
           <motion.button
             onClick={() => scrollToSection(section.id)}
+            onMouseEnter={() => setHoveredDot(section.id)}
+            onMouseLeave={() => setHoveredDot(null)}
             className="relative flex items-center justify-center flex-shrink-0"
             whileHover={{ scale: 1.2 }}
             whileTap={{ scale: 0.9 }}
