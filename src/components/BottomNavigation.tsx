@@ -162,9 +162,9 @@ const BottomNavigation = memo(() => {
               </motion.button>
             );
           })}
+          </div>
         </div>
       </div>
-    </div>
     </motion.nav>
   );
 });
