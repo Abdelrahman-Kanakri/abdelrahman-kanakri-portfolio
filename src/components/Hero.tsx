@@ -12,7 +12,7 @@ const Hero = memo(() => {
   }, []);
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center px-4 sm:px-6 py-8">
+    <section id="home" className="min-h-screen flex items-center justify-center px-6 sm:px-8 py-8">
       <div className="container mx-auto max-w-7xl">
         <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Profile Image - Mobile First */}
