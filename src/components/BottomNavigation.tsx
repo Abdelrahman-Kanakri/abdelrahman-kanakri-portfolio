@@ -73,22 +73,23 @@ const BottomNavigation = memo(() => {
     >
       {/* Glass morphism background */}
       <div className="bg-card/90 backdrop-blur-xl border-t border-accent/20 shadow-2xl">
-        <div className="flex items-center justify-center gap-4 px-4 py-2 safe-area-bottom">
-          {NAV_ITEMS.map((item) => {
-            const Icon = item.icon;
-            const isActive = activeSection === item.id;
+        <div className="w-full flex items-center justify-center py-3 px-4 safe-area-bottom">
+          <div className="flex items-center justify-center gap-6">
+            {NAV_ITEMS.map((item) => {
+              const Icon = item.icon;
+              const isActive = activeSection === item.id;
 
-            return (
-              <motion.button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className="relative flex flex-col items-center justify-center py-2.5 px-2 min-w-[60px]"
-                whileTap={{ scale: 0.85 }}
-                animate={{
-                  scale: isActive ? 1.05 : 0.95,
-                }}
-                transition={{ duration: 0.2 }}
-              >
+              return (
+                <motion.button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className="relative flex flex-col items-center justify-center min-w-[56px]"
+                  whileTap={{ scale: 0.85 }}
+                  animate={{
+                    scale: isActive ? 1.05 : 0.95,
+                  }}
+                  transition={{ duration: 0.2 }}
+                >
                 {/* Active indicator background */}
                 <AnimatePresence>
                   {isActive && (
@@ -163,6 +164,7 @@ const BottomNavigation = memo(() => {
           })}
         </div>
       </div>
+    </div>
     </motion.nav>
   );
 });
