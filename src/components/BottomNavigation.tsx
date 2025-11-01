@@ -73,7 +73,7 @@ const BottomNavigation = memo(() => {
     >
       {/* Glass morphism background */}
       <div className="bg-card/90 backdrop-blur-xl border-t border-accent/20 shadow-2xl">
-        <div className="flex items-center justify-center gap-1 px-2 py-2 safe-area-bottom max-w-md mx-auto">
+        <div className="flex items-center justify-center gap-4 px-4 py-2 safe-area-bottom">
           {NAV_ITEMS.map((item) => {
             const Icon = item.icon;
             const isActive = activeSection === item.id;
@@ -82,7 +82,7 @@ const BottomNavigation = memo(() => {
               <motion.button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="relative flex flex-col items-center justify-center flex-1 py-2.5 px-1 min-w-0"
+                className="relative flex flex-col items-center justify-center py-2.5 px-2 min-w-[60px]"
                 whileTap={{ scale: 0.85 }}
                 animate={{
                   scale: isActive ? 1.05 : 0.95,
