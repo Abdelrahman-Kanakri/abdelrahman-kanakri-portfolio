@@ -73,7 +73,7 @@ const BottomNavigation = memo(() => {
     >
       {/* Glass morphism background */}
       <div className="bg-card/90 backdrop-blur-xl border-t border-accent/20 shadow-2xl">
-        <div className="flex items-center justify-around px-2 py-2 safe-area-bottom">
+        <div className="flex items-center justify-center gap-1 px-2 py-2 safe-area-bottom max-w-md mx-auto">
           {NAV_ITEMS.map((item) => {
             const Icon = item.icon;
             const isActive = activeSection === item.id;
