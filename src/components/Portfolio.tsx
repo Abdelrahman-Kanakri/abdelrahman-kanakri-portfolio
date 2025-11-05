@@ -19,7 +19,7 @@ const PROJECTS = [
       "Optimized study plan generation logic"
     ],
     tags: ["AI", "Data Modeling", "Recommendation Systems", "Python", "Data Analysis"],
-    link: "https://colab.research.google.com/drive/1GupuPAedDMZmsX-94PMj91FWdwgIb6dv?usp=drive_link"
+    link: "https://github.com/Abdelrahman-Kanakri/Data-Science-and-AI/tree/Projects/University%20RS%20%26%20LLM/Model"
   },
   {
     title: "Smart Recycling System",
