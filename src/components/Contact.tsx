@@ -71,11 +71,24 @@ const Contact = memo(() => {
             {CONTACT_INFO.map((item, index) => {
               const Icon = item.icon;
               return (
-                <motion.a key={index} href={item.link} target={item.link.startsWith('http') ? '_blank' : undefined} rel={item.link.startsWith('http') ? 'noopener noreferrer' : undefined} whileTap={{ scale: 0.98 }}>
-                  <Card className="border-accent/20 bg-card/50 backdrop-blur-sm hover:bg-card/70 transition-all duration-300 hover:border-accent/40 hover:shadow-lg hover:shadow-accent/10">
+                <motion.a 
+                  key={index} 
+                  href={item.link} 
+                  target={item.link.startsWith('http') ? '_blank' : undefined} 
+                  rel={item.link.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  whileHover={{ 
+                    scale: 1.02,
+                    y: -4,
+                    transition: { duration: 0.25, ease: "easeOut" }
+                  }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <Card className="border-accent/20 bg-card/50 backdrop-blur-sm hover:bg-card/70 transition-all duration-300 hover:border-accent/40 hover:shadow-lg hover:shadow-accent/10 group/card">
                     <CardContent className="p-4 sm:p-5 lg:p-6">
                       <div className="flex items-center gap-3 sm:gap-4">
-                        <div className="p-2.5 sm:p-3 bg-accent/10 rounded-lg"><Icon className="h-5 w-5 sm:h-6 sm:w-6 text-accent" /></div>
+                        <div className="p-2.5 sm:p-3 bg-accent/10 rounded-lg transition-all duration-300 group-hover/card:bg-accent/20">
+                          <Icon className="h-5 w-5 sm:h-6 sm:w-6 text-accent transition-colors duration-300 group-hover/card:scale-110" />
+                        </div>
                         <div className="min-w-0 flex-1">
                           <p className="text-xs sm:text-sm text-muted-foreground">{item.label}</p>
                           <p className="text-sm sm:text-base font-medium text-foreground truncate">{item.value}</p>
