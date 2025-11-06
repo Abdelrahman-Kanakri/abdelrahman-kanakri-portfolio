@@ -35,6 +35,24 @@ const CERTIFICATES = [
     category: "Machine Learning"
   },
   {
+    name: "Machine Learning Part 2",
+    issuer: "Unihance",
+    date: "July 2023",
+    category: "Machine Learning"
+  },
+  {
+    name: "Statistics for Data Science and AI",
+    issuer: "Unihance",
+    date: "July 2023",
+    category: "Statistics"
+  },
+  {
+    name: "Machine Learning Part 1",
+    issuer: "Unihance",
+    date: "June 2023",
+    category: "Machine Learning"
+  },
+  {
     name: "Modelling in Data Science",
     issuer: "Unihance",
     date: "April 2023",
@@ -47,10 +65,10 @@ const CERTIFICATES = [
     category: "Statistics"
   },
   {
-    name: "Introduction to Artificial Intelligence",
+    name: "Python For Data Science (Part 2)",
     issuer: "Unihance",
-    date: "June 2022",
-    category: "AI"
+    date: "July 2022",
+    category: "Python"
   },
   {
     name: "Python For Data Science (Part 1)",
@@ -59,10 +77,10 @@ const CERTIFICATES = [
     category: "Python"
   },
   {
-    name: "Python For Data Science (Part 2)",
+    name: "Introduction to Artificial Intelligence",
     issuer: "Unihance",
-    date: "July 2022",
-    category: "Python"
+    date: "June 2022",
+    category: "AI"
   }
 ];
 
