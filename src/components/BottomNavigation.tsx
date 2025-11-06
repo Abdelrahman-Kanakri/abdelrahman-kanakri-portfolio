@@ -74,8 +74,8 @@ const BottomNavigation = memo(() => {
     >
       {/* Glass morphism background */}
       <div className="bg-card/90 backdrop-blur-xl border-t border-accent/20 shadow-2xl">
-        <div className="w-full flex items-center justify-center py-3 px-4 safe-area-bottom">
-          <div className="flex items-center justify-center gap-6">
+        <div className="w-full flex items-center justify-center py-2 px-2 safe-area-bottom">
+          <div className="flex items-center justify-around w-full max-w-md gap-1">
             {NAV_ITEMS.map((item) => {
               const Icon = item.icon;
               const isActive = activeSection === item.id;
@@ -84,7 +84,7 @@ const BottomNavigation = memo(() => {
                 <motion.button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className="relative flex flex-col items-center justify-center min-w-[56px]"
+                  className="relative flex flex-col items-center justify-center flex-1 min-w-0 px-1"
                   whileTap={{ scale: 0.85 }}
                   animate={{
                     scale: isActive ? 1.05 : 0.95,
@@ -124,7 +124,7 @@ const BottomNavigation = memo(() => {
                 >
                   <Icon
                     className={clsx(
-                      'h-6 w-6 transition-colors duration-200',
+                      'h-5 w-5 transition-colors duration-200',
                       isActive
                         ? 'text-accent drop-shadow-[0_0_8px_hsl(var(--accent)/0.5)]'
                         : 'text-foreground/60'
@@ -148,7 +148,7 @@ const BottomNavigation = memo(() => {
                 {/* Label */}
                 <motion.span
                   className={clsx(
-                    'text-[11px] font-semibold mt-1 transition-colors duration-200',
+                    'text-[9px] font-semibold mt-0.5 transition-colors duration-200 truncate w-full text-center',
                     isActive ? 'text-accent' : 'text-foreground/50'
                   )}
                   animate={{
