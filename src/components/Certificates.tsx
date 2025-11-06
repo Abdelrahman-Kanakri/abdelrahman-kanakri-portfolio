@@ -183,7 +183,7 @@ const Certificates = memo(() => {
               loop: true,
             }}
           >
-            <CarouselContent className="-ml-2 md:-ml-4 overflow-visible pt-8 pb-16">
+            <CarouselContent className="-ml-2 md:-ml-4 overflow-visible pt-8 pb-8">
               {CERTIFICATES.map((cert, index) => {
                 const isCurrent = current - 1 === index;
                 const distance = Math.abs(current - 1 - index);
@@ -255,7 +255,7 @@ const Certificates = memo(() => {
         </div>
 
         {/* Pagination Dots */}
-        <div className="flex justify-center gap-1.5 sm:gap-2 mt-2 sm:mt-4">
+        <div className="flex justify-center gap-1.5 sm:gap-2 mt-8 sm:mt-10">
           {Array.from({ length: count }).map((_, index) => (
             <motion.button
               key={index}
