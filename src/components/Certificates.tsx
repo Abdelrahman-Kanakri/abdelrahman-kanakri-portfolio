@@ -134,17 +134,21 @@ const Certificates = memo(() => {
           </p>
           
           {/* Dynamic Certificate Counter with Slide Animation */}
-          <div className="relative h-12 sm:h-14 flex items-center justify-center overflow-hidden mt-6">
-            <motion.div 
-              className="text-2xl sm:text-3xl font-semibold text-accent absolute"
-              key={current}
-              initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -30, opacity: 0 }}
-              transition={{ duration: 0.4, ease: [0.4, 0.0, 0.2, 1] }}
-            >
-              My {current} Certificate
-            </motion.div>
+          <div className="relative h-12 sm:h-14 flex items-center justify-center gap-2 mt-6">
+            <span className="text-2xl sm:text-3xl font-semibold text-accent">My</span>
+            <div className="relative w-12 sm:w-16 h-12 sm:h-14 flex items-center justify-center overflow-hidden">
+              <motion.span
+                className="text-2xl sm:text-3xl font-semibold text-accent absolute"
+                key={current}
+                initial={{ y: 30, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: -30, opacity: 0 }}
+                transition={{ duration: 0.4, ease: [0.4, 0.0, 0.2, 1] }}
+              >
+                {current}
+              </motion.span>
+            </div>
+            <span className="text-2xl sm:text-3xl font-semibold text-accent">Certificate</span>
           </div>
         </motion.div>
 
