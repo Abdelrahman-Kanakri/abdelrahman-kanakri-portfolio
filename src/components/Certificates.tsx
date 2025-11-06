@@ -158,7 +158,7 @@ const Certificates = memo(() => {
             variant="outline"
             size="icon"
             onClick={scrollPrev}
-            className="absolute -left-2 sm:-left-4 md:-left-6 top-1/2 -translate-y-1/2 z-10 h-10 w-10 sm:h-12 sm:w-12 rounded-full border-accent/30 bg-card/90 backdrop-blur-sm text-accent hover:bg-accent hover:text-background transition-all duration-300 shadow-lg"
+            className="absolute -left-2 sm:-left-4 md:-left-6 top-1/2 -translate-y-1/2 z-10 h-10 w-16 sm:h-12 sm:w-20 rounded-full border-accent/30 bg-card/90 backdrop-blur-sm text-accent hover:bg-accent hover:text-background transition-all duration-300 shadow-lg"
             aria-label="Previous certificate"
           >
             <ChevronLeft className="h-5 w-5 sm:h-6 sm:w-6" />
@@ -168,7 +168,7 @@ const Certificates = memo(() => {
             variant="outline"
             size="icon"
             onClick={scrollNext}
-            className="absolute -right-2 sm:-right-4 md:-right-6 top-1/2 -translate-y-1/2 z-10 h-10 w-10 sm:h-12 sm:w-12 rounded-full border-accent/30 bg-card/90 backdrop-blur-sm text-accent hover:bg-accent hover:text-background transition-all duration-300 shadow-lg"
+            className="absolute -right-2 sm:-right-4 md:-right-6 top-1/2 -translate-y-1/2 z-10 h-10 w-16 sm:h-12 sm:w-20 rounded-full border-accent/30 bg-card/90 backdrop-blur-sm text-accent hover:bg-accent hover:text-background transition-all duration-300 shadow-lg"
             aria-label="Next certificate"
           >
             <ChevronRight className="h-5 w-5 sm:h-6 sm:w-6" />
@@ -183,7 +183,7 @@ const Certificates = memo(() => {
               loop: true,
             }}
           >
-            <CarouselContent className="-ml-2 md:-ml-4 overflow-visible pt-8 pb-8">
+            <CarouselContent className="-ml-2 md:-ml-4 overflow-visible pt-8 pb-16">
               {CERTIFICATES.map((cert, index) => {
                 const isCurrent = current - 1 === index;
                 const distance = Math.abs(current - 1 - index);
@@ -255,7 +255,7 @@ const Certificates = memo(() => {
         </div>
 
         {/* Pagination Dots */}
-        <div className="flex justify-center gap-1.5 sm:gap-2 mt-6 sm:mt-8">
+        <div className="flex justify-center gap-1.5 sm:gap-2 mt-2 sm:mt-4">
           {Array.from({ length: count }).map((_, index) => (
             <motion.button
               key={index}
