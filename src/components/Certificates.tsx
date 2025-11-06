@@ -2,8 +2,14 @@ import { Award, Calendar, ChevronLeft, ChevronRight } from "lucide-react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { motion } from "framer-motion";
+import { useState, useEffect, useCallback, memo } from "react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel";
+import type { CarouselApi } from "@/components/ui/carousel";
 
 const CERTIFICATES = [
   {
@@ -86,45 +92,32 @@ const CERTIFICATES = [
   }
 ];
 
-const Certificates = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState(0);
+const Certificates = memo(() => {
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+  const [count, setCount] = useState(0);
 
-  const slideVariants = {
-    enter: (direction: number) => ({
-      rotateY: direction > 0 ? 90 : -90,
-      opacity: 0,
-      scale: 0.5,
-      z: -400,
-    }),
-    center: {
-      rotateY: 0,
-      opacity: 1,
-      scale: 1,
-      z: 0,
-    },
-    exit: (direction: number) => ({
-      rotateY: direction < 0 ? 90 : -90,
-      opacity: 0,
-      scale: 0.5,
-      z: -400,
-    }),
-  };
+  useEffect(() => {
+    if (!api) return;
 
-  const paginate = (newDirection: number) => {
-    setDirection(newDirection);
-    setCurrentIndex((prevIndex) => {
-      let nextIndex = prevIndex + newDirection;
-      if (nextIndex < 0) nextIndex = CERTIFICATES.length - 1;
-      if (nextIndex >= CERTIFICATES.length) nextIndex = 0;
-      return nextIndex;
+    setCount(api.scrollSnapList().length);
+    setCurrent(api.selectedScrollSnap() + 1);
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap() + 1);
     });
-  };
+  }, [api]);
 
-  const currentCert = CERTIFICATES[currentIndex];
+  const scrollPrev = useCallback(() => {
+    api?.scrollPrev();
+  }, [api]);
+
+  const scrollNext = useCallback(() => {
+    api?.scrollNext();
+  }, [api]);
 
   return (
-    <section id="certificates" className="py-12 sm:py-16 lg:py-20 px-4 overflow-hidden">
+    <section id="certificates" className="py-12 sm:py-16 lg:py-20 px-4">
       <div className="container mx-auto max-w-6xl">
         <motion.div 
           className="text-center mb-10 sm:mb-12 lg:mb-16 space-y-3 sm:space-y-4"
@@ -139,73 +132,77 @@ const Certificates = () => {
           <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
             Professional certifications and accomplishments
           </p>
+          
+          {/* Dynamic Certificate Counter */}
+          <motion.div 
+            className="text-2xl sm:text-3xl font-semibold text-accent mt-6"
+            key={current}
+            initial={{ scale: 1.2, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+          >
+            My {current} Certificate
+          </motion.div>
         </motion.div>
 
-        <div className="relative flex items-center justify-center" style={{ perspective: "2000px" }}>
-          {/* Previous Button */}
+        <div className="relative px-12 sm:px-16">
+          <Carousel setApi={setApi} className="w-full">
+            <CarouselContent>
+              {CERTIFICATES.map((cert, index) => (
+                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                  <motion.div
+                    initial={{ y: 30, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="h-full"
+                  >
+                    <Card className="border-accent/20 bg-card/50 backdrop-blur-sm hover:bg-card/70 transition-all duration-300 hover:border-accent/40 hover:shadow-lg hover:shadow-accent/10 h-full group">
+                      <CardHeader className="space-y-4">
+                        <div className="flex items-start justify-between gap-4">
+                          <div className="p-3 bg-accent/10 rounded-lg transition-all duration-300 group-hover:bg-accent/20">
+                            <Award className="h-6 w-6 text-accent" />
+                          </div>
+                          <Badge variant="secondary" className="text-xs">
+                            {cert.category}
+                          </Badge>
+                        </div>
+                      </CardHeader>
+                      <CardContent className="space-y-4">
+                        <div className="space-y-2">
+                          <h3 className="text-lg font-semibold text-foreground line-clamp-2">
+                            {cert.name}
+                          </h3>
+                          <p className="text-sm text-muted-foreground">
+                            {cert.issuer}
+                          </p>
+                        </div>
+                        <div className="flex items-center gap-2 text-sm text-muted-foreground pt-2 border-t border-accent/10">
+                          <Calendar className="h-4 w-4" />
+                          <span>{cert.date}</span>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
+
+          {/* Navigation Buttons */}
           <Button
             variant="outline"
             size="icon"
-            onClick={() => paginate(-1)}
-            className="absolute left-0 z-10 h-12 w-12 rounded-full bg-background/80 backdrop-blur-sm border-accent/20 hover:border-accent/40 hover:bg-accent/10"
+            onClick={scrollPrev}
+            className="absolute left-0 top-1/2 -translate-y-1/2 h-12 w-12 rounded-full bg-background/80 backdrop-blur-sm border-accent/20 hover:border-accent/40 hover:bg-accent/10 transition-all duration-300"
           >
             <ChevronLeft className="h-6 w-6" />
           </Button>
-
-          {/* 3D Carousel */}
-          <div className="relative w-full max-w-md h-[500px] flex items-center justify-center">
-            <AnimatePresence initial={false} custom={direction} mode="wait">
-              <motion.div
-                key={currentIndex}
-                custom={direction}
-                variants={slideVariants}
-                initial="enter"
-                animate="center"
-                exit="exit"
-                transition={{
-                  rotateY: { type: "spring", stiffness: 300, damping: 30 },
-                  opacity: { duration: 0.3 },
-                  scale: { duration: 0.3 },
-                }}
-                className="absolute w-full"
-                style={{ transformStyle: "preserve-3d" }}
-              >
-                <Card className="border-accent/20 bg-card/50 backdrop-blur-sm hover:bg-card/70 transition-all duration-300 hover:border-accent/40 hover:shadow-lg hover:shadow-accent/10 group">
-                  <CardHeader className="space-y-4">
-                    <div className="flex items-start justify-between gap-4">
-                      <div className="p-3 bg-accent/10 rounded-lg transition-all duration-300 group-hover:bg-accent/20">
-                        <Award className="h-6 w-6 text-accent" />
-                      </div>
-                      <Badge variant="secondary" className="text-xs">
-                        {currentCert.category}
-                      </Badge>
-                    </div>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    <div className="space-y-2">
-                      <h3 className="text-lg font-semibold text-foreground">
-                        {currentCert.name}
-                      </h3>
-                      <p className="text-sm text-muted-foreground">
-                        {currentCert.issuer}
-                      </p>
-                    </div>
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground pt-2 border-t border-accent/10">
-                      <Calendar className="h-4 w-4" />
-                      <span>{currentCert.date}</span>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            </AnimatePresence>
-          </div>
-
-          {/* Next Button */}
           <Button
             variant="outline"
             size="icon"
-            onClick={() => paginate(1)}
-            className="absolute right-0 z-10 h-12 w-12 rounded-full bg-background/80 backdrop-blur-sm border-accent/20 hover:border-accent/40 hover:bg-accent/10"
+            onClick={scrollNext}
+            className="absolute right-0 top-1/2 -translate-y-1/2 h-12 w-12 rounded-full bg-background/80 backdrop-blur-sm border-accent/20 hover:border-accent/40 hover:bg-accent/10 transition-all duration-300"
           >
             <ChevronRight className="h-6 w-6" />
           </Button>
@@ -213,25 +210,24 @@ const Certificates = () => {
 
         {/* Pagination Dots */}
         <div className="flex justify-center gap-2 mt-8">
-          {CERTIFICATES.map((_, index) => (
+          {Array.from({ length: count }).map((_, index) => (
             <button
               key={index}
-              onClick={() => {
-                setDirection(index > currentIndex ? 1 : -1);
-                setCurrentIndex(index);
-              }}
+              onClick={() => api?.scrollTo(index)}
               className={`h-2 rounded-full transition-all duration-300 ${
-                index === currentIndex
+                index === current - 1
                   ? "w-8 bg-accent"
                   : "w-2 bg-accent/30 hover:bg-accent/50"
               }`}
-              aria-label={`Go to certificate ${index + 1}`}
+              aria-label={`Go to slide ${index + 1}`}
             />
           ))}
         </div>
       </div>
     </section>
   );
-};
+});
+
+Certificates.displayName = 'Certificates';
 
 export default Certificates;
