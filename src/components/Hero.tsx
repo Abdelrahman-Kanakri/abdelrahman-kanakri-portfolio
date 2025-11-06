@@ -17,7 +17,7 @@ const Hero = memo(() => {
         <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Profile Image - Mobile First */}
           <motion.div 
-            className="relative flex justify-center lg:hidden order-first"
+            className="relative flex justify-center lg:hidden order-first mb-6 sm:mb-8"
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.5, type: "spring" }}
