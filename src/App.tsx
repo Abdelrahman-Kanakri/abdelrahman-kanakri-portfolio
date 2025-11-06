@@ -7,6 +7,7 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Services from './components/Services';
 import Portfolio from './components/Portfolio';
+import Certificates from './components/Certificates';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
@@ -26,6 +27,7 @@ function App() {
         <About />      {/* Has id="about" */}
         <Services />   {/* Has id="services" */}
         <Portfolio />  {/* Has id="projects" */}
+        <Certificates /> {/* Has id="certificates" */}
         <Contact />    {/* Has id="contact" */}
       </main>
       
