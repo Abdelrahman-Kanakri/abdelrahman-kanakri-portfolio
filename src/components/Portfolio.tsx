@@ -8,20 +8,6 @@ import { motion } from "framer-motion";
 
 const PROJECTS = [
   {
-    title: "Study Plan Supervisor",
-    subtitle: "AI-Powered Academic Advisor",
-    date: "2024",
-    description: "Developed an AI-powered academic advisor to solve the common challenge students face in navigating complex university study plans. This tool analyzes a student's completed coursework and provides clear, accurate recommendations for their next semester, ensuring all prerequisites are met and students stay on a logical path to graduation.",
-    achievements: [
-      "Structured curriculum data model for complex requirements",
-      "Prerequisite-compliant recommendation engine",
-      "Trained on 3 technical majors: AI, CS, and CYS",
-      "Optimized study plan generation logic"
-    ],
-    tags: ["AI", "Data Modeling", "Recommendation Systems", "Python", "Data Analysis"],
-    link: "https://github.com/Abdelrahman-Kanakri/Data-Science-and-AI/tree/Projects/University%20RS%20%26%20LLM/Model"
-  },
-  {
     title: "Smart Recycling System",
     subtitle: "Graduation Project",
     date: "February 2025",
