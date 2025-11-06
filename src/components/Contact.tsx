@@ -59,15 +59,15 @@ const Contact = memo(() => {
   }, []);
 
   return (
-    <section id="contact" className="py-12 sm:py-16 lg:py-20 px-6 sm:px-8">
+    <section id="contact" className="py-12 sm:py-16 lg:py-20">
       <div className="container mx-auto max-w-6xl">
         <motion.div className="text-center mb-10 sm:mb-12 lg:mb-16 space-y-3 sm:space-y-4" initial={{ y: 20, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gradient">Get In Touch</h2>
-          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto px-4">Let's collaborate on your next data science or AI project</p>
+          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">Let's collaborate on your next data science or AI project</p>
         </motion.div>
 
         <div className="grid lg:grid-cols-5 gap-6 sm:gap-8 lg:gap-12">
-          <motion.div className="lg:col-span-2 space-y-4 sm:space-y-6 w-full max-w-md mx-auto lg:mx-0 lg:max-w-none" initial={{ x: -30, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
+          <motion.div className="lg:col-span-2 space-y-4 sm:space-y-6 w-full mx-auto lg:mx-0 lg:max-w-none" initial={{ x: -30, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
             {CONTACT_INFO.map((item, index) => {
               const Icon = item.icon;
               return (
@@ -101,7 +101,7 @@ const Contact = memo(() => {
             })}
           </motion.div>
 
-          <motion.div className="lg:col-span-3 w-full max-w-md mx-auto lg:mx-0 lg:max-w-none" initial={{ x: 30, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
+          <motion.div className="lg:col-span-3 w-full mx-auto lg:mx-0 lg:max-w-none" initial={{ x: 30, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
             <Card className="border-accent/20 bg-card/50 backdrop-blur-sm transition-all duration-300 hover:border-accent/40 hover:shadow-lg hover:shadow-accent/10">
               <CardContent className="p-5 sm:p-6 lg:p-8">
                 <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
