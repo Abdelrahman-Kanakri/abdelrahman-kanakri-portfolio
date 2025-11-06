@@ -13,12 +13,6 @@ import type { CarouselApi } from "@/components/ui/carousel";
 
 const CERTIFICATES = [
   {
-    name: "Tech for Jobs Advanced Data Analytics Program",
-    issuer: "Correlation One",
-    date: "March 2025",
-    category: "Data Analytics"
-  },
-  {
     name: "Automation and AI Agent Training Course",
     issuer: "Robotna",
     date: "September 2025",
@@ -29,6 +23,12 @@ const CERTIFICATES = [
     issuer: "Certiport",
     date: "May 2025",
     category: "Digital Literacy"
+  },
+  {
+    name: "Tech for Jobs Advanced Data Analytics Program",
+    issuer: "Correlation One",
+    date: "March 2025",
+    category: "Data Analytics"
   },
   {
     name: "The Data Science Course: Complete Bootcamp 2024",
