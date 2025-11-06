@@ -1,6 +1,6 @@
 import { memo, useCallback, useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Home, User, Briefcase, FolderOpen, Mail } from 'lucide-react';
+import { Home, User, Briefcase, FolderOpen, Award, Mail } from 'lucide-react';
 import clsx from 'clsx';
 
 const NAV_ITEMS = [
@@ -8,6 +8,7 @@ const NAV_ITEMS = [
   { id: 'about', label: 'About', icon: User },
   { id: 'services', label: 'Services', icon: Briefcase },
   { id: 'projects', label: 'Projects', icon: FolderOpen },
+  { id: 'certificates', label: 'Certificates', icon: Award },
   { id: 'contact', label: 'Contact', icon: Mail },
 ] as const;
 

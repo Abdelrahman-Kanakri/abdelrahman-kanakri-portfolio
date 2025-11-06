@@ -5,22 +5,64 @@ import { motion } from "framer-motion";
 
 const CERTIFICATES = [
   {
-    name: "Certificate Name Here",
-    issuer: "Issuing Organization",
-    date: "January 2024",
+    name: "Tech for Jobs Advanced Data Analytics Program",
+    issuer: "Correlation One",
+    date: "March 2025",
+    category: "Data Analytics"
+  },
+  {
+    name: "Automation and AI Agent Training Course",
+    issuer: "Robotna",
+    date: "September 2025",
+    category: "AI & Automation"
+  },
+  {
+    name: "IC3 Digital Literacy Certification",
+    issuer: "Certiport",
+    date: "May 2025",
+    category: "Digital Literacy"
+  },
+  {
+    name: "The Data Science Course: Complete Bootcamp 2024",
+    issuer: "Udemy (365 Careers)",
+    date: "July 2024",
     category: "Data Science"
   },
   {
-    name: "Another Certificate",
-    issuer: "Organization Name",
-    date: "December 2023",
+    name: "Machine Learning",
+    issuer: "Simplilearn",
+    date: "August 2023",
     category: "Machine Learning"
   },
   {
-    name: "Third Certificate",
-    issuer: "Educational Platform",
-    date: "November 2023",
+    name: "Modelling in Data Science",
+    issuer: "Unihance",
+    date: "April 2023",
+    category: "Data Science"
+  },
+  {
+    name: "Statistics for Business Analytics & Data Science",
+    issuer: "Unihance",
+    date: "January 2023",
+    category: "Statistics"
+  },
+  {
+    name: "Introduction to Artificial Intelligence",
+    issuer: "Unihance",
+    date: "June 2022",
     category: "AI"
+  },
+  {
+    name: "Python For Data Science (Part 1)",
+    issuer: "Unihance",
+    date: "June 2022",
+    category: "Python"
+  },
+  {
+    name: "Python For Data Science (Part 2)",
+    issuer: "Unihance",
+    date: "July 2022",
+    category: "Python"
   }
 ];
 

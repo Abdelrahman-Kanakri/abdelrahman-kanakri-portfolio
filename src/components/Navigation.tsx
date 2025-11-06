@@ -8,6 +8,7 @@ const NAV_LINKS = [
   { id: "about", label: "About" },
   { id: "services", label: "Services" },
   { id: "projects", label: "Portfolio" }, // This label is "Portfolio" but id is "projects", which is correct
+  { id: "certificates", label: "Certificates" },
   { id: "contact", label: "Contact" },
 ] as const;
 

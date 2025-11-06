@@ -4,7 +4,7 @@ import { useScroll, useMotionValueEvent } from 'framer-motion';
 // ---
 // 1. DEFINE THE IDS FOR ALL YOUR SECTIONS
 // ---
-const SECTION_IDS = ['home', 'about', 'services', 'projects', 'contact'] as const;
+const SECTION_IDS = ['home', 'about', 'services', 'projects', 'certificates', 'contact'] as const;
 type SectionId = (typeof SECTION_IDS)[number];
 
 // ---
