@@ -134,7 +134,7 @@ const Certificates = memo(() => {
           </p>
           
           {/* Dynamic Certificate Counter with Slide Animation */}
-          <div className="relative h-12 sm:h-14 flex items-center justify-center gap-2 mt-6">
+          <div className="relative h-12 sm:h-14 flex items-center justify-center gap-1 mt-6">
             <span className="text-2xl sm:text-3xl font-semibold text-accent">My</span>
             <div className="relative w-12 sm:w-16 h-12 sm:h-14 flex items-center justify-center overflow-hidden">
               <motion.span
