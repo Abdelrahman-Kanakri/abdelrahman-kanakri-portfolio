@@ -104,6 +104,20 @@ const PROJECTS = [
     ],
     tags: ["AI Automation", "NLP", "Telegram Bot", "RAG"],
     link: "https://github.com/Abdelrahman-Kanakri/n8n-Automation/tree/main/Data%20Science%20Assistant"
+  },
+  {
+    title: "Study Plan Supervisor",
+    subtitle: "AI-Powered Academic Advisor",
+    date: "2024",
+    description: "Developed an AI-powered academic advisor to solve the common challenge students face in navigating complex university study plans. This tool analyzes a student's completed coursework and provides clear, accurate recommendations for their next semester, ensuring all prerequisites are met and students stay on a logical path to graduation.",
+    achievements: [
+      "Structured data model for complex curriculum requirements",
+      "Prerequisite-compliant study plan generation",
+      "Trained on 3 technical majors (AI, CS, CYS)",
+      "Optimized recommendation engine logic"
+    ],
+    tags: ["AI", "Data Modeling", "Data Analysis", "Recommendation Systems", "Curriculum Logic"],
+    link: ""
   }
 ] as const;
 
@@ -277,20 +291,30 @@ const Portfolio = memo(() => {
                           </div>
 
                           {/* CTA */}
-                          <a 
-                            href={project.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="block mt-auto"
-                          >
+                          {project.link ? (
+                            <a 
+                              href={project.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="block mt-auto"
+                            >
+                              <Button 
+                                variant="outline"
+                                className="w-full border-accent/30 text-accent hover:bg-accent hover:text-background transition-all duration-300 group-hover/card:border-accent text-xs sm:text-sm py-2 sm:py-2.5"
+                              >
+                                View Project
+                                <ExternalLink className="ml-1.5 sm:ml-2 h-3 w-3 sm:h-4 sm:w-4" />
+                              </Button>
+                            </a>
+                          ) : (
                             <Button 
                               variant="outline"
-                              className="w-full border-accent/30 text-accent hover:bg-accent hover:text-background transition-all duration-300 group-hover/card:border-accent text-xs sm:text-sm py-2 sm:py-2.5"
+                              disabled
+                              className="w-full mt-auto border-accent/20 text-muted-foreground cursor-not-allowed text-xs sm:text-sm py-2 sm:py-2.5"
                             >
-                              View Project
-                              <ExternalLink className="ml-1.5 sm:ml-2 h-3 w-3 sm:h-4 sm:w-4" />
+                              Coming Soon
                             </Button>
-                          </a>
+                          )}
                         </div>
                       </CardContent>
                     </Card>
