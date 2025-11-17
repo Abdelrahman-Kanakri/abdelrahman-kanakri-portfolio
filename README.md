@@ -14,10 +14,6 @@
   <a href="mailto:abdelrahamankanakrik@gmail.com">
     <img src="https://img.shields.io/badge/Email-Contact_Me-red?style=for-the-badge&logo=gmail" alt="Email" />
   </a>
-  <a href="#https://abdelrahman-kanakri.github.io/abdelrahman-kanakri-portfolio/">
-    <img src="https://img.shields.io/badge/Portfolio-View_Projects-2ea44f?style=for-the-badge" alt="Portfolio" />
-  </a>
-
 </div>
 
 ---
