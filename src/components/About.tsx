@@ -5,9 +5,20 @@ import { Card, CardContent } from "@/components/ui/card";
 
 const EXPERIENCES = [
   {
+    title: "AI Lead Engineer",
+    company: "HyvenTech",
+    date: "December 2024 - Present",
+    achievements: [
+      "Architected and deployed AI-powered chatbot for company website to enhance customer engagement",
+      "Developed custom AI agents for business process automation and intelligent workflow optimization",
+      "Led Computer Vision projects leveraging deep learning for real-world applications",
+      "Designed and implemented end-to-end AI solutions aligned with business objectives"
+    ]
+  },
+  {
     title: "AI Automation Trainee",
     company: "Robotna Education",
-    date: "September 2025",
+    date: "September 2024",
     achievements: [
       "Gained hands-on experience in AI automation technologies and workflows",
       "Developed automated solutions for streamlining business processes",

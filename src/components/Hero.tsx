@@ -12,12 +12,12 @@ const Hero = memo(() => {
   }, []);
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center px-6 sm:px-8 py-8">
+    <section id="home" className="min-h-screen flex items-center justify-center px-6 sm:px-8 pt-20 sm:pt-24 pb-8">
       <div className="container mx-auto max-w-7xl">
         <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Profile Image - Mobile First */}
           <motion.div 
-            className="relative flex justify-center lg:hidden order-first mb-6 sm:mb-8"
+            className="relative flex justify-center lg:hidden order-first mb-4 sm:mb-6"
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.5, type: "spring" }}

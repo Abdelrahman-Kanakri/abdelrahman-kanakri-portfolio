@@ -198,8 +198,9 @@ const Portfolio = memo(() => {
             }}
             plugins={[
               Autoplay({
-                delay: 5000,
+                delay: 4000,
                 stopOnInteraction: true,
+                stopOnMouseEnter: true,
               }),
             ]}
             className="w-full"
