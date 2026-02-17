@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Color Combo Preview</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        background: #111;
+        color: #fff;
+        padding: 2rem;
+      }
+      h1 {
+        text-align: center;
+        font-family: "Poppins", sans-serif;
+        font-size: 2rem;
+        margin-bottom: 2rem;
+        color: #ccc;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .combo {
+        border-radius: 16px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        transition:
+          transform 0.3s,
+          box-shadow 0.3s;
+      }
+      .combo:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+      }
+      .combo:last-child {
+        grid-column: 1 / -1;
+        max-width: 680px;
+        justify-self: center;
+      }
+
+      .combo-label {
+        padding: 0.8rem 1.5rem;
+        font-family: "Poppins", sans-serif;
+        font-weight: 700;
+        font-size: 0.95rem;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      }
+
+      .combo-body {
+        padding: 2rem;
+      }
+
+      .combo-name {
+        font-family: "Poppins", sans-serif;
+        font-size: 2.2rem;
+        font-weight: 800;
+        line-height: 1.1;
+        margin-bottom: 0.3rem;
+      }
+      .combo-span {
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .combo-title {
+        font-size: 1rem;
+        margin-bottom: 0.8rem;
+      }
+      .combo-bio {
+        font-size: 0.88rem;
+        line-height: 1.7;
+        margin-bottom: 1.2rem;
+        max-width: 360px;
+      }
+
+      .combo-btns {
+        display: flex;
+        gap: 0.7rem;
+        margin-bottom: 1.2rem;
+        flex-wrap: wrap;
+      }
+      .combo-btn {
+        display: inline-block;
+        padding: 0.55rem 1.3rem;
+        border-radius: 999px;
+        font-family: "Poppins", sans-serif;
+        font-weight: 600;
+        font-size: 0.82rem;
+        text-decoration: none;
+        transition: transform 0.2s;
+      }
+      .combo-btn:hover {
+        transform: translateY(-2px);
+      }
+
+      .combo-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+      }
+      .combo-badge {
+        padding: 0.3rem 0.75rem;
+        border-radius: 999px;
+        font-size: 0.75rem;
+        font-weight: 500;
+        backdrop-filter: blur(8px);
+      }
+
+      .swatches {
+        display: flex;
+        gap: 0.5rem;
+        margin-top: 1.2rem;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+      }
+      .swatch {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        border: 2px solid rgba(255, 255, 255, 0.15);
+      }
+
+      /* ───── 1. Modern & Sharp ───── */
+      .c1 {
+        background: #0d0d0d;
+      }
+      .c1 .combo-label {
+        background: #111;
+        color: #00d4ff;
+      }
+      .c1 .combo-name {
+        color: #fff;
+      }
+      .c1 .combo-span {
+        background: linear-gradient(135deg, #00d4ff, #fff);
+      }
+      .c1 .combo-title {
+        color: #2f4f4f;
+      }
+      .c1 .combo-bio {
+        color: #8a9a9a;
+      }
+      .c1 .combo-btn.primary {
+        background: linear-gradient(135deg, #00d4ff, #2f4f4f);
+        color: #000;
+      }
+      .c1 .combo-btn.outline {
+        border: 2px solid #00d4ff;
+        color: #00d4ff;
+        background: transparent;
+      }
+      .c1 .combo-badge {
+        background: rgba(0, 212, 255, 0.08);
+        border: 1px solid rgba(0, 212, 255, 0.2);
+        color: #00d4ff;
+      }
+
+      /* ───── 2. Sporty & Dynamic ───── */
+      .c2 {
+        background: #080808;
+      }
+      .c2 .combo-label {
+        background: #0a0a0a;
+        color: #ff00ff;
+      }
+      .c2 .combo-name {
+        color: #fff;
+      }
+      .c2 .combo-span {
+        background: linear-gradient(135deg, #00e5ff, #ff00ff);
+      }
+      .c2 .combo-title {
+        color: #ffd600;
+      }
+      .c2 .combo-bio {
+        color: #999;
+      }
+      .c2 .combo-btn.primary {
+        background: linear-gradient(135deg, #00e5ff, #ff00ff);
+        color: #000;
+      }
+      .c2 .combo-btn.outline {
+        border: 2px solid #ffd600;
+        color: #ffd600;
+        background: transparent;
+      }
+      .c2 .combo-badge {
+        background: rgba(255, 0, 255, 0.08);
+        border: 1px solid rgba(255, 0, 255, 0.2);
+        color: #ff00ff;
+      }
+
+      /* ───── 3. Tech/Sophisticated ───── */
+      .c3 {
+        background: #141414;
+      }
+      .c3 .combo-label {
+        background: #181818;
+        color: #00bcd4;
+      }
+      .c3 .combo-name {
+        color: #e0e0e0;
+      }
+      .c3 .combo-span {
+        background: linear-gradient(135deg, #00bcd4, #78909c);
+      }
+      .c3 .combo-title {
+        color: #78909c;
+      }
+      .c3 .combo-bio {
+        color: #757575;
+      }
+      .c3 .combo-btn.primary {
+        background: linear-gradient(135deg, #00bcd4, #546e7a);
+        color: #000;
+      }
+      .c3 .combo-btn.outline {
+        border: 2px solid #546e7a;
+        color: #78909c;
+        background: transparent;
+      }
+      .c3 .combo-badge {
+        background: rgba(0, 188, 212, 0.06);
+        border: 1px solid rgba(0, 188, 212, 0.12);
+        color: #00bcd4;
+      }
+
+      /* ───── 4. Complementary Contrast ───── */
+      .c4 {
+        background: #0a0a0a;
+      }
+      .c4 .combo-label {
+        background: #0e0e0e;
+        color: #e53935;
+      }
+      .c4 .combo-name {
+        color: #fff;
+      }
+      .c4 .combo-span {
+        background: linear-gradient(135deg, #00e5ff, #e53935);
+      }
+      .c4 .combo-title {
+        color: #888;
+      }
+      .c4 .combo-bio {
+        color: #777;
+      }
+      .c4 .combo-btn.primary {
+        background: linear-gradient(135deg, #00e5ff, #00838f);
+        color: #000;
+      }
+      .c4 .combo-btn.outline {
+        border: 2px solid #e53935;
+        color: #e53935;
+        background: transparent;
+      }
+      .c4 .combo-badge {
+        background: rgba(229, 57, 53, 0.08);
+        border: 1px solid rgba(229, 57, 53, 0.2);
+        color: #e53935;
+      }
+
+      /* ───── 5. Digital/Gaming ───── */
+      .c5 {
+        background: #050505;
+      }
+      .c5 .combo-label {
+        background: #080808;
+        color: #00ffea;
+      }
+      .c5 .combo-name {
+        color: #fff;
+      }
+      .c5 .combo-span {
+        background: linear-gradient(135deg, #00ffea, #80ffea);
+      }
+      .c5 .combo-title {
+        color: #666;
+      }
+      .c5 .combo-bio {
+        color: #555;
+      }
+      .c5 .combo-btn.primary {
+        background: #00ffea;
+        color: #000;
+        box-shadow: 0 0 20px rgba(0, 255, 234, 0.3);
+      }
+      .c5 .combo-btn.outline {
+        border: 2px solid #00ffea;
+        color: #00ffea;
+        background: transparent;
+        box-shadow: 0 0 10px rgba(0, 255, 234, 0.15);
+      }
+      .c5 .combo-badge {
+        background: rgba(0, 255, 234, 0.06);
+        border: 1px solid rgba(0, 255, 234, 0.15);
+        color: #00ffea;
+        text-shadow: 0 0 6px rgba(0, 255, 234, 0.3);
+      }
+
+      @media (max-width: 800px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+        .combo:last-child {
+          max-width: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Pick Your Color Combo</h1>
+    <div class="grid">
+      <!-- 1. Modern & Sharp -->
+      <div class="combo c1">
+        <div class="combo-label">
+          1 · Modern & Sharp — Cyan + Black + White + Darkslategray
+        </div>
+        <div class="combo-body">
+          <div class="combo-name">
+            Abdelrahman <span class="combo-span">Kanakri</span>
+          </div>
+          <div class="combo-title">Data Scientist & AI Engineer</div>
+          <p class="combo-bio">
+            Aspiring Data Scientist skilled in Python, Machine Learning, NLP,
+            and Data Analytics.
+          </p>
+          <div class="combo-btns">
+            <span class="combo-btn primary">View Projects</span>
+            <span class="combo-btn outline">Get In Touch</span>
+          </div>
+          <div class="combo-badges">
+            <span class="combo-badge">Python</span>
+            <span class="combo-badge">PyTorch</span>
+            <span class="combo-badge">TensorFlow</span>
+            <span class="combo-badge">LangChain</span>
+            <span class="combo-badge">Docker</span>
+          </div>
+          <div class="swatches">
+            <div class="swatch" style="background: #00d4ff" title="Cyan"></div>
+            <div class="swatch" style="background: #000" title="Black"></div>
+            <div class="swatch" style="background: #fff" title="White"></div>
+            <div
+              class="swatch"
+              style="background: #2f4f4f"
+              title="Darkslategray"
+            ></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Sporty & Dynamic -->
+      <div class="combo c2">
+        <div class="combo-label">
+          2 · Sporty & Dynamic — Cyan + Black + Magenta + Yellow
+        </div>
+        <div class="combo-body">
+          <div class="combo-name">
+            Abdelrahman <span class="combo-span">Kanakri</span>
+          </div>
+          <div class="combo-title">Data Scientist & AI Engineer</div>
+          <p class="combo-bio">
+            Aspiring Data Scientist skilled in Python, Machine Learning, NLP,
+            and Data Analytics.
+          </p>
+          <div class="combo-btns">
+            <span class="combo-btn primary">View Projects</span>
+            <span class="combo-btn outline">Get In Touch</span>
+          </div>
+          <div class="combo-badges">
+            <span class="combo-badge">Python</span>
+            <span class="combo-badge">PyTorch</span>
+            <span class="combo-badge">TensorFlow</span>
+            <span class="combo-badge">LangChain</span>
+            <span class="combo-badge">Docker</span>
+          </div>
+          <div class="swatches">
+            <div class="swatch" style="background: #00e5ff" title="Cyan"></div>
+            <div class="swatch" style="background: #000" title="Black"></div>
+            <div
+              class="swatch"
+              style="background: #ff00ff"
+              title="Magenta"
+            ></div>
+            <div
+              class="swatch"
+              style="background: #ffd600"
+              title="Yellow"
+            ></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Tech/Sophisticated -->
+      <div class="combo c3">
+        <div class="combo-label">
+          3 · Tech/Sophisticated — Cyan + Matte Black + Grey
+        </div>
+        <div class="combo-body">
+          <div class="combo-name">
+            Abdelrahman <span class="combo-span">Kanakri</span>
+          </div>
+          <div class="combo-title">Data Scientist & AI Engineer</div>
+          <p class="combo-bio">
+            Aspiring Data Scientist skilled in Python, Machine Learning, NLP,
+            and Data Analytics.
+          </p>
+          <div class="combo-btns">
+            <span class="combo-btn primary">View Projects</span>
+            <span class="combo-btn outline">Get In Touch</span>
+          </div>
+          <div class="combo-badges">
+            <span class="combo-badge">Python</span>
+            <span class="combo-badge">PyTorch</span>
+            <span class="combo-badge">TensorFlow</span>
+            <span class="combo-badge">LangChain</span>
+            <span class="combo-badge">Docker</span>
+          </div>
+          <div class="swatches">
+            <div class="swatch" style="background: #00bcd4" title="Cyan"></div>
+            <div
+              class="swatch"
+              style="background: #1a1a1a"
+              title="Matte Black"
+            ></div>
+            <div class="swatch" style="background: #78909c" title="Grey"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Complementary Contrast -->
+      <div class="combo c4">
+        <div class="combo-label">
+          4 · Complementary Contrast — Cyan + Black + Red
+        </div>
+        <div class="combo-body">
+          <div class="combo-name">
+            Abdelrahman <span class="combo-span">Kanakri</span>
+          </div>
+          <div class="combo-title">Data Scientist & AI Engineer</div>
+          <p class="combo-bio">
+            Aspiring Data Scientist skilled in Python, Machine Learning, NLP,
+            and Data Analytics.
+          </p>
+          <div class="combo-btns">
+            <span class="combo-btn primary">View Projects</span>
+            <span class="combo-btn outline">Get In Touch</span>
+          </div>
+          <div class="combo-badges">
+            <span class="combo-badge">Python</span>
+            <span class="combo-badge">PyTorch</span>
+            <span class="combo-badge">TensorFlow</span>
+            <span class="combo-badge">LangChain</span>
+            <span class="combo-badge">Docker</span>
+          </div>
+          <div class="swatches">
+            <div class="swatch" style="background: #00e5ff" title="Cyan"></div>
+            <div class="swatch" style="background: #000" title="Black"></div>
+            <div class="swatch" style="background: #e53935" title="Red"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Digital/Gaming -->
+      <div class="combo c5">
+        <div class="combo-label">
+          5 · Digital/Gaming — Bright Neon Cyan on Matte Black
+        </div>
+        <div class="combo-body">
+          <div class="combo-name">
+            Abdelrahman <span class="combo-span">Kanakri</span>
+          </div>
+          <div class="combo-title">Data Scientist & AI Engineer</div>
+          <p class="combo-bio">
+            Aspiring Data Scientist skilled in Python, Machine Learning, NLP,
+            and Data Analytics.
+          </p>
+          <div class="combo-btns">
+            <span class="combo-btn primary">View Projects</span>
+            <span class="combo-btn outline">Get In Touch</span>
+          </div>
+          <div class="combo-badges">
+            <span class="combo-badge">Python</span>
+            <span class="combo-badge">PyTorch</span>
+            <span class="combo-badge">TensorFlow</span>
+            <span class="combo-badge">LangChain</span>
+            <span class="combo-badge">Docker</span>
+          </div>
+          <div class="swatches">
+            <div
+              class="swatch"
+              style="
+                background: #00ffea;
+                box-shadow: 0 0 10px rgba(0, 255, 234, 0.4);
+              "
+              title="Neon Cyan"
+            ></div>
+            <div
+              class="swatch"
+              style="background: #050505"
+              title="Matte Black"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
