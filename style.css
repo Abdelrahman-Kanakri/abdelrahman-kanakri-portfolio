@@ -81,6 +81,8 @@ a {
   color: var(--accent);
   text-decoration: none;
   transition: var(--transition);
+  cursor: pointer;
+  pointer-events: auto;
 }
 a:hover {
   color: hsl(188, 95%, 80%);
