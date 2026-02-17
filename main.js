@@ -90,17 +90,25 @@ filterBtns.forEach((btn) => {
     filterBtns.forEach((b) => b.classList.remove("active"));
     btn.classList.add("active");
 
-    // Filter cards
+    // Filter cards — only animate cards that were previously hidden
     projectCards.forEach((card) => {
       const tags = card.getAttribute("data-tags") || "";
       const show = category === "all" || tags.includes(category);
-      card.style.display = show ? "" : "none";
-      // Re-trigger animation
+      const wasHidden = card.style.display === "none";
+
       if (show) {
-        card.classList.remove("visible");
-        requestAnimationFrame(() => {
-          animateOnScroll.observe(card);
-        });
+        card.style.display = "";
+        if (wasHidden) {
+          // Only fade in cards that are newly appearing
+          card.classList.remove("visible");
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              card.classList.add("visible");
+            });
+          });
+        }
+      } else {
+        card.style.display = "none";
       }
     });
   });

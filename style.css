@@ -4,17 +4,17 @@
 
 :root {
   /* — Color Palette (Digital/Gaming: Neon Cyan on Matte Black) — */
-  --bg-primary:      hsl(0, 0%, 5%);           /* true matte black */
-  --bg-secondary:    hsl(210, 10%, 9%);         /* slightly lighter black */
-  --bg-glass:        hsla(210, 10%, 12%, 0.6);  /* glass on black */
-  --accent:          hsl(185, 100%, 55%);       /* bright neon cyan */
-  --accent-dim:      hsl(185, 80%, 30%);        /* deeper cyan for gradients */
-  --accent-glow:     hsla(185, 100%, 55%, 0.2); /* neon glow */
-  --text-primary:    hsl(0, 0%, 96%);           /* crisp white */
-  --text-muted:      hsl(0, 0%, 55%);           /* neutral grey */
-  --border:          hsla(185, 60%, 50%, 0.12); /* subtle cyan-tinted border */
-  --gradient-start:  hsl(0, 0%, 5%);
-  --gradient-end:    hsl(185, 100%, 40%);
+  --bg-primary: hsl(0, 0%, 5%); /* true matte black */
+  --bg-secondary: hsl(210, 10%, 9%); /* slightly lighter black */
+  --bg-glass: hsla(210, 10%, 12%, 0.6); /* glass on black */
+  --accent: hsl(185, 100%, 55%); /* bright neon cyan */
+  --accent-dim: hsl(185, 80%, 30%); /* deeper cyan for gradients */
+  --accent-glow: hsla(185, 100%, 55%, 0.2); /* neon glow */
+  --text-primary: hsl(0, 0%, 96%); /* crisp white */
+  --text-muted: hsl(0, 0%, 55%); /* neutral grey */
+  --border: hsla(185, 60%, 50%, 0.12); /* subtle cyan-tinted border */
+  --gradient-start: hsl(0, 0%, 5%);
+  --gradient-end: hsl(185, 100%, 40%);
 
   /* — Typography — */
   --font-display: "Poppins", sans-serif;
@@ -48,6 +48,19 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Allow text selection in form inputs & textareas */
+input,
+textarea {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
 }
 
 html {
@@ -477,7 +490,7 @@ section {
   z-index: 0;
 }
 .profile-photo-ring::after {
-  content: '';
+  content: "";
   position: absolute;
   inset: -6px;
   border-radius: 50%;
@@ -488,8 +501,12 @@ section {
 }
 
 @keyframes ringRotate {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* Floating tech badges */
@@ -530,8 +547,13 @@ section {
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0) rotate(-1deg); }
-  50%      { transform: translateY(-10px) rotate(1deg); }
+  0%,
+  100% {
+    transform: translateY(0) rotate(-1deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(1deg);
+  }
 }
 
 /* ════════════════════════════════════════════════════
