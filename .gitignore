@@ -85,3 +85,9 @@ public/
 # OS metadata
 .DS_Store
 Thumbs.db
+
+# IDE files
+.idea/ 
+PORTFOLIO_CONTENT.md
+SKILL.md 
+PORTFOLIO_PROMPT.md

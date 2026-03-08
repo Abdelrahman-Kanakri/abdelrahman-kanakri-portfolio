@@ -133,6 +133,11 @@ LangChain, LangSmith, Hugging Face, Scikit-learn, PyTorch, TensorFlow, ChromaDB,
     - **Tags**: LangChain, RAG, FastAPI, ChromaDB, Mistral AI, Python.
     - **Link**: [GitHub Repo](https://github.com/Abdelrahman-Kanakri/AI_document_Q-A)
 
+9.  **RAG From Scratch Tutorial** (Tutorial Series, 2026)
+    - **Description**: A 14-part hands-on tutorial building RAG systems from the ground up — covering indexing, retrieval, generation, multi-query, RAG Fusion, RAPTOR, ColBERT, routing, and query construction using LangChain.
+    - **Tags**: LangChain, RAG, ChromaDB, Mistral AI, ColBERT, RAPTOR, Pydantic.
+    - **Link**: [GitHub Repo](https://github.com/Abdelrahman-Kanakri/rag_tutrial_by_AK)
+
 ---
 
 ## 5. Certificates Section (`src/components/Certificates.tsx`)
