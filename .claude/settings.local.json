@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run:*)",
+      "Bash(find /c/Users/abdel/OneDrive/Desktop/dr-cookies/supabase/migrations -type f -name *.sql)",
+      "Bash(grep -n \"console\\\\.\" /c/Users/abdel/OneDrive/Desktop/dr-cookies/src/pages/*.tsx /c/Users/abdel/OneDrive/Desktop/dr-cookies/src/hooks/*.tsx)"
+    ]
+  }
+}

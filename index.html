@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Outfit:wght@300;400;500;600&display=swap"
       rel="stylesheet"
     />
     <link
@@ -29,6 +29,28 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <!-- ═══ Scroll Progress Bar ═══ -->
+    <div class="scroll-progress" id="scroll-progress"></div>
+
+    <!-- ═══ Custom Cursor ═══ -->
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-ring" id="cursor-ring"></div>
+
+    <!-- ═══ Grain Overlay ═══ -->
+    <div class="grain-overlay"></div>
+
+    <!-- ═══ Side Dot Navigation ═══ -->
+    <nav class="side-nav" id="side-nav" aria-label="Section navigation">
+      <a href="#home" class="side-dot active" data-label="Home"></a>
+      <a href="#about" class="side-dot" data-label="About"></a>
+      <a href="#services" class="side-dot" data-label="Services"></a>
+      <a href="#experience" class="side-dot" data-label="Experience"></a>
+      <a href="#projects" class="side-dot" data-label="Projects"></a>
+      <a href="#skills" class="side-dot" data-label="Skills"></a>
+      <a href="#certificates" class="side-dot" data-label="Certificates"></a>
+      <a href="#contact" class="side-dot" data-label="Contact"></a>
+    </nav>
+
     <!-- ═══════════════════ NAVIGATION ═══════════════════ -->
     <nav id="navbar">
       <div class="nav-container">
@@ -51,40 +73,38 @@
 
     <!-- ═══════════════════ HERO ═══════════════════ -->
     <section id="home" class="hero">
-      <!-- Decorative background elements -->
-      <div class="hero-bg-orb orb-1"></div>
-      <div class="hero-bg-orb orb-2"></div>
-      <div class="hero-grid-lines"></div>
+      <div class="hero-gradient-mesh"></div>
 
       <div class="hero-content">
         <div class="hero-text">
-          <p class="hero-greeting animate-on-scroll">Hello, I'm</p>
-          <h1 class="hero-name animate-on-scroll">
-            Abdelrahman<br /><span class="gradient-text">Kanakri</span>
-          </h1>
-          <h2 class="hero-title animate-on-scroll">
-            Data Scientist & AI Engineer
+          <p class="hero-greeting stagger-reveal" data-delay="0">Hello, I'm</p>
+          <h1 class="hero-name split-chars" data-delay="200">Abdelrahman</h1>
+          <h1 class="hero-name hero-name-accent split-chars" data-delay="600">Kanakri</h1>
+          <h2 class="hero-title">
+            <span class="typewriter" data-text="Data Scientist & AI Engineer"></span>
+            <span class="typewriter-cursor">|</span>
           </h2>
-          <p class="hero-bio animate-on-scroll">
+          <p class="hero-bio stagger-reveal" data-delay="1800">
             Aspiring Data Scientist skilled in Python, Machine Learning, NLP,
             and Data Analytics. Proven ability to develop predictive models,
             analyze complex datasets, and deliver insights through tools like
             SQL, Tableau, and Power BI.
           </p>
-          <div class="hero-buttons animate-on-scroll">
-            <a href="#projects" class="btn btn-primary"
+          <div class="hero-buttons stagger-reveal" data-delay="2000">
+            <a href="#projects" class="btn btn-primary magnetic"
               ><i class="fa-solid fa-rocket"></i> View Projects</a
             >
-            <a href="#contact" class="btn btn-outline"
+            <a href="#contact" class="btn btn-outline magnetic"
               ><i class="fa-solid fa-envelope"></i> Get In Touch</a
             >
           </div>
-          <div class="hero-socials animate-on-scroll">
+          <div class="hero-socials stagger-reveal" data-delay="2200">
             <a
               href="https://github.com/Abdelrahman-Kanakri/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"
+              class="magnetic"
               ><i class="fa-brands fa-github"></i
             ></a>
             <a
@@ -92,6 +112,7 @@
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
+              class="magnetic"
               ><i class="fa-brands fa-linkedin-in"></i
             ></a>
             <a
@@ -99,6 +120,7 @@
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Kaggle"
+              class="magnetic"
               ><i class="fa-brands fa-kaggle"></i
             ></a>
             <a
@@ -106,13 +128,13 @@
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Email"
+              class="magnetic"
               ><i class="fa-solid fa-envelope"></i
             ></a>
           </div>
         </div>
 
-        <div class="hero-visual animate-on-scroll">
-          <!-- Profile Photo -->
+        <div class="hero-visual stagger-reveal" data-delay="400">
           <div class="profile-photo-wrapper">
             <img
               src="assets/profile-photo.jpg"
@@ -120,47 +142,47 @@
               class="profile-photo"
             />
             <div class="profile-photo-ring"></div>
+            <div class="profile-photo-glow"></div>
           </div>
 
-          <!-- Tech Stack Icons -->
           <div class="hero-badges">
             <span class="badge" style="--delay: 0s"
               ><i class="devicon-python-plain"></i> Python</span
             >
-            <span class="badge" style="--delay: 0.2s"
+            <span class="badge" style="--delay: 0.15s"
               ><i class="devicon-pytorch-original"></i> PyTorch</span
             >
-            <span class="badge" style="--delay: 0.4s"
+            <span class="badge" style="--delay: 0.3s"
               ><i class="devicon-tensorflow-original"></i> TensorFlow</span
             >
-            <span class="badge" style="--delay: 0.6s"
+            <span class="badge" style="--delay: 0.45s"
               ><i class="devicon-scikitlearn-plain"></i> Scikit-learn</span
             >
-            <span class="badge" style="--delay: 0.8s"
+            <span class="badge" style="--delay: 0.6s"
               ><i class="devicon-pandas-plain"></i> Pandas</span
             >
-            <span class="badge" style="--delay: 1s"
+            <span class="badge" style="--delay: 0.75s"
               ><i class="devicon-numpy-plain"></i> NumPy</span
             >
-            <span class="badge" style="--delay: 1.2s"
+            <span class="badge" style="--delay: 0.9s"
               ><i class="devicon-postgresql-plain"></i> PostgreSQL</span
             >
-            <span class="badge" style="--delay: 1.4s"
+            <span class="badge" style="--delay: 1.05s"
               ><i class="devicon-mysql-plain"></i> MySQL</span
             >
-            <span class="badge" style="--delay: 1.6s"
+            <span class="badge" style="--delay: 1.2s"
               ><i class="devicon-docker-plain"></i> Docker</span
             >
-            <span class="badge" style="--delay: 1.8s"
+            <span class="badge" style="--delay: 1.35s"
               ><i class="devicon-kubernetes-plain"></i> Kubernetes</span
             >
-            <span class="badge" style="--delay: 2s"
+            <span class="badge" style="--delay: 1.5s"
               ><i class="fa-solid fa-link"></i> LangChain</span
             >
-            <span class="badge" style="--delay: 2.2s"
+            <span class="badge" style="--delay: 1.65s"
               ><i class="fa-solid fa-face-smile"></i> Hugging Face</span
             >
-            <span class="badge" style="--delay: 2.4s"
+            <span class="badge" style="--delay: 1.8s"
               ><i class="devicon-chrome-plain"></i> ChromaDB</span
             >
           </div>
@@ -168,18 +190,16 @@
       </div>
     </section>
 
-    <!-- ═══════════════════ ABOUT ═══════════════════ -->
-    <section id="about" class="about section-alt">
+    <!-- ═══════════════════ ABOUT (Bento Grid) ═══════════════════ -->
+    <section id="about" class="about">
       <div class="container">
         <div class="section-header animate-on-scroll">
-          <h2 class="section-title">About <span class="accent">Me</span></h2>
-          <p class="section-subtitle">
-            Building the future with data-driven insights and innovative AI
-            solutions
-          </p>
+          <span class="section-tag">About Me</span>
+          <h2 class="section-title">Building the future with data-driven<br /><span class="accent">insights & AI solutions</span></h2>
         </div>
-        <div class="about-grid">
-          <div class="about-text animate-on-scroll">
+        <div class="bento-grid">
+          <div class="bento-card bento-large animate-on-scroll" data-stagger="0">
+            <div class="bento-label"><i class="fa-solid fa-user"></i> Who I Am</div>
             <p>
               I'm a passionate Data Scientist and AI Engineer with a Bachelor's
               degree in Data Science & Artificial Intelligence from Irbid
@@ -194,27 +214,22 @@
               complex problems and delivering measurable impact through data.
             </p>
           </div>
-          <div class="about-cards animate-on-scroll">
-            <div class="glass-card about-card">
-              <i class="fa-solid fa-graduation-cap about-card-icon"></i>
-              <h3>Education</h3>
-              <p class="card-highlight">BSc Data Science & AI</p>
-              <p class="text-muted">Irbid National University — 2024</p>
-            </div>
-            <div class="about-stats">
-              <div class="glass-card stat-card">
-                <span class="stat-number">2+</span>
-                <span class="stat-label">Years Experience</span>
-              </div>
-              <div class="glass-card stat-card">
-                <span class="stat-number">8+</span>
-                <span class="stat-label">Projects</span>
-              </div>
-              <div class="glass-card stat-card">
-                <span class="stat-number">13</span>
-                <span class="stat-label">Certificates</span>
-              </div>
-            </div>
+          <div class="bento-card bento-medium animate-on-scroll" data-stagger="1">
+            <div class="bento-label"><i class="fa-solid fa-graduation-cap"></i> Education</div>
+            <h3 class="bento-highlight">BSc Data Science & AI</h3>
+            <p class="text-muted">Irbid National University — 2024</p>
+          </div>
+          <div class="bento-card bento-stat animate-on-scroll" data-stagger="2">
+            <span class="stat-number">2+</span>
+            <span class="stat-label">Years Experience</span>
+          </div>
+          <div class="bento-card bento-stat animate-on-scroll" data-stagger="3">
+            <span class="stat-number">8+</span>
+            <span class="stat-label">Projects</span>
+          </div>
+          <div class="bento-card bento-stat animate-on-scroll" data-stagger="4">
+            <span class="stat-number">13</span>
+            <span class="stat-label">Certificates</span>
           </div>
         </div>
       </div>
@@ -222,18 +237,16 @@
 
     <!-- ═══════════════════ SERVICES ═══════════════════ -->
     <section id="services" class="services">
+      <div class="section-mesh"></div>
       <div class="container">
         <div class="section-header animate-on-scroll">
+          <span class="section-tag">What I Do</span>
           <h2 class="section-title">
             AI & Data Science <span class="accent">Solutions</span>
           </h2>
-          <p class="section-subtitle">
-            Empowering businesses with intelligent solutions and data-driven
-            strategies
-          </p>
         </div>
         <div class="services-grid">
-          <div class="glass-card service-card animate-on-scroll">
+          <div class="glass-card service-card animate-on-scroll" data-stagger="0">
             <div class="service-icon"><i class="fa-solid fa-brain"></i></div>
             <h3>AI Model Development</h3>
             <p>
@@ -249,7 +262,7 @@
               <span class="service-tag">Transfer learning</span>
             </div>
           </div>
-          <div class="glass-card service-card animate-on-scroll">
+          <div class="glass-card service-card animate-on-scroll" data-stagger="1">
             <div class="service-icon">
               <i class="fa-solid fa-chart-line"></i>
             </div>
@@ -266,7 +279,7 @@
               <span class="service-tag">Statistical modeling</span>
             </div>
           </div>
-          <div class="glass-card service-card animate-on-scroll">
+          <div class="glass-card service-card animate-on-scroll" data-stagger="2">
             <div class="service-icon"><i class="fa-solid fa-gears"></i></div>
             <h3>AI Automation Systems</h3>
             <p>
@@ -287,18 +300,16 @@
     </section>
 
     <!-- ═══════════════════ EXPERIENCE ═══════════════════ -->
-    <section id="experience" class="experience section-alt">
+    <section id="experience" class="experience">
       <div class="container">
         <div class="section-header animate-on-scroll">
+          <span class="section-tag">My Journey</span>
           <h2 class="section-title">
             Work <span class="accent">Experience</span>
           </h2>
-          <p class="section-subtitle">
-            My professional journey in Data Science and AI
-          </p>
         </div>
         <div class="timeline">
-          <div class="timeline-item animate-on-scroll">
+          <div class="timeline-item animate-on-scroll" data-stagger="0">
             <div class="timeline-dot"></div>
             <div class="glass-card timeline-card">
               <div class="timeline-header">
@@ -332,7 +343,7 @@
             </div>
           </div>
 
-          <div class="timeline-item animate-on-scroll">
+          <div class="timeline-item animate-on-scroll" data-stagger="1">
             <div class="timeline-dot"></div>
             <div class="glass-card timeline-card">
               <div class="timeline-header">
@@ -363,7 +374,7 @@
             </div>
           </div>
 
-          <div class="timeline-item animate-on-scroll">
+          <div class="timeline-item animate-on-scroll" data-stagger="2">
             <div class="timeline-dot"></div>
             <div class="glass-card timeline-card">
               <div class="timeline-header">
@@ -392,7 +403,7 @@
             </div>
           </div>
 
-          <div class="timeline-item animate-on-scroll">
+          <div class="timeline-item animate-on-scroll" data-stagger="3">
             <div class="timeline-dot"></div>
             <div class="glass-card timeline-card">
               <div class="timeline-header">
@@ -422,14 +433,13 @@
 
     <!-- ═══════════════════ PROJECTS ═══════════════════ -->
     <section id="projects" class="projects">
+      <div class="section-mesh"></div>
       <div class="container">
         <div class="section-header animate-on-scroll">
+          <span class="section-tag">My Work</span>
           <h2 class="section-title">
             Featured <span class="accent">Projects</span>
           </h2>
-          <p class="section-subtitle">
-            Showcasing innovative solutions and impactful data-driven projects
-          </p>
         </div>
 
         <!-- Filter bar -->
@@ -449,9 +459,11 @@
 
         <div class="projects-grid">
           <div
-            class="glass-card project-card animate-on-scroll"
+            class="glass-card project-card animate-on-scroll tilt-card"
             data-tags="deep-learning"
+            data-stagger="0"
           >
+            <div class="card-spotlight"></div>
             <div class="project-icon"><i class="fa-solid fa-recycle"></i></div>
             <span class="project-date">Feb 2025 · Graduation Project</span>
             <h3>Smart Recycling System</h3>
@@ -475,9 +487,11 @@
           </div>
 
           <div
-            class="glass-card project-card animate-on-scroll"
+            class="glass-card project-card animate-on-scroll tilt-card"
             data-tags="machine-learning"
+            data-stagger="1"
           >
+            <div class="card-spotlight"></div>
             <div class="project-icon">
               <i class="fa-solid fa-heart-pulse"></i>
             </div>
@@ -502,9 +516,11 @@
           </div>
 
           <div
-            class="glass-card project-card animate-on-scroll"
+            class="glass-card project-card animate-on-scroll tilt-card"
             data-tags="machine-learning"
+            data-stagger="2"
           >
+            <div class="card-spotlight"></div>
             <div class="project-icon"><i class="fa-solid fa-car"></i></div>
             <span class="project-date">2024 · Regression Analysis</span>
             <h3>Sport Cars Price Prediction</h3>
@@ -527,9 +543,11 @@
           </div>
 
           <div
-            class="glass-card project-card animate-on-scroll"
+            class="glass-card project-card animate-on-scroll tilt-card"
             data-tags="machine-learning"
+            data-stagger="3"
           >
+            <div class="card-spotlight"></div>
             <div class="project-icon"><i class="fa-solid fa-film"></i></div>
             <span class="project-date">Jan 2025 · Correlation One</span>
             <h3>IMDB Top 1000 Movies Analysis</h3>
@@ -553,9 +571,11 @@
           </div>
 
           <div
-            class="glass-card project-card animate-on-scroll"
+            class="glass-card project-card animate-on-scroll tilt-card"
             data-tags="deep-learning"
+            data-stagger="4"
           >
+            <div class="card-spotlight"></div>
             <div class="project-icon"><i class="fa-solid fa-lungs"></i></div>
             <span class="project-date">May 2025 · Medical AI</span>
             <h3>Lung Cancer Prediction</h3>
@@ -578,9 +598,11 @@
           </div>
 
           <div
-            class="glass-card project-card animate-on-scroll"
+            class="glass-card project-card animate-on-scroll tilt-card"
             data-tags="nlp"
+            data-stagger="5"
           >
+            <div class="card-spotlight"></div>
             <div class="project-icon">
               <i class="fa-solid fa-newspaper"></i>
             </div>
@@ -605,9 +627,11 @@
           </div>
 
           <div
-            class="glass-card project-card animate-on-scroll"
+            class="glass-card project-card animate-on-scroll tilt-card"
             data-tags="ai-automation"
+            data-stagger="6"
           >
+            <div class="card-spotlight"></div>
             <div class="project-icon"><i class="fa-solid fa-robot"></i></div>
             <span class="project-date">Aug 2025 · AI Automation</span>
             <h3>Data Scientist Agent</h3>
@@ -630,9 +654,11 @@
           </div>
 
           <div
-            class="glass-card project-card animate-on-scroll"
+            class="glass-card project-card animate-on-scroll tilt-card"
             data-tags="ai-automation"
+            data-stagger="7"
           >
+            <div class="card-spotlight"></div>
             <div class="project-icon"><i class="fa-solid fa-comments"></i></div>
             <span class="project-date">2026 · Agent-Based AI</span>
             <h3>AI Q&A Assistant</h3>
@@ -655,9 +681,11 @@
           </div>
 
           <div
-            class="glass-card project-card animate-on-scroll"
+            class="glass-card project-card animate-on-scroll tilt-card"
             data-tags="ai-automation"
+            data-stagger="8"
           >
+            <div class="card-spotlight"></div>
             <div class="project-icon"><i class="fa-solid fa-book-open"></i></div>
             <span class="project-date">2026 · Tutorial Series</span>
             <h3>RAG From Scratch Tutorial</h3>
@@ -684,75 +712,74 @@
       </div>
     </section>
 
-    <!-- ═══════════════════ SKILLS ═══════════════════ -->
-    <section id="skills" class="skills section-alt">
+    <!-- ═══════════════════ SKILLS (Constellation) ═══════════════════ -->
+    <section id="skills" class="skills">
       <div class="container">
         <div class="section-header animate-on-scroll">
+          <span class="section-tag">Expertise</span>
           <h2 class="section-title">My <span class="accent">Skills</span></h2>
-          <p class="section-subtitle">Technologies and tools I work with</p>
         </div>
-        <div class="skills-grid">
-          <div class="glass-card skill-category animate-on-scroll">
-            <div class="skill-category-icon">
-              <i class="fa-solid fa-code"></i>
-            </div>
-            <h3>Technical Skills</h3>
-            <div class="skill-pills">
-              <span class="skill-pill">Python</span>
-              <span class="skill-pill">Java</span>
-              <span class="skill-pill">C++</span>
-              <span class="skill-pill">Pandas</span>
-              <span class="skill-pill">NumPy</span>
-              <span class="skill-pill">Data Structures</span>
-              <span class="skill-pill">Algorithms</span>
-              <span class="skill-pill">Deep Learning</span>
-              <span class="skill-pill">Machine Learning</span>
-              <span class="skill-pill">Data Analytics</span>
-              <span class="skill-pill">NLP</span>
-              <span class="skill-pill">Scikit-learn</span>
-              <span class="skill-pill">TensorFlow</span>
-              <span class="skill-pill">RAG</span>
-              <span class="skill-pill">LangChain</span>
-              <span class="skill-pill">Vector Databases</span>
-              <span class="skill-pill">Embeddings</span>
-              <span class="skill-pill">RAG Fusion</span>
-              <span class="skill-pill">Query Routing</span>
-              <span class="skill-pill">RAPTOR</span>
-              <span class="skill-pill">ColBERT</span>
-              <span class="skill-pill">Prompt Engineering</span>
-              <span class="skill-pill">Pydantic</span>
-            </div>
-          </div>
-          <div class="glass-card skill-category animate-on-scroll">
-            <div class="skill-category-icon">
-              <i class="fa-solid fa-screwdriver-wrench"></i>
-            </div>
-            <h3>Tools & Platforms</h3>
-            <div class="skill-pills">
-              <span class="skill-pill">Tableau</span>
-              <span class="skill-pill">Power BI</span>
-              <span class="skill-pill">Looker</span>
-              <span class="skill-pill">Git</span>
-              <span class="skill-pill">Google Colab</span>
-              <span class="skill-pill">Jupyter Notebook</span>
-              <span class="skill-pill">Docker</span>
-              <span class="skill-pill">Kubernetes</span>
-              <span class="skill-pill">PostgreSQL</span>
-              <span class="skill-pill">MySQL</span>
-              <span class="skill-pill">ChromaDB</span>
+        <div class="skills-constellation">
+          <div class="skill-orbit animate-on-scroll" data-stagger="0">
+            <h3 class="orbit-label"><i class="fa-solid fa-code"></i> Technical Skills</h3>
+            <div class="skill-cloud">
+              <span class="skill-node" style="--float-speed:3s;--float-distance:-12px">Python</span>
+              <span class="skill-node" style="--float-speed:4s;--float-distance:10px">Java</span>
+              <span class="skill-node" style="--float-speed:3.5s;--float-distance:-8px">C++</span>
+              <span class="skill-node lg" style="--float-speed:5s;--float-distance:15px">Deep Learning</span>
+              <span class="skill-node lg" style="--float-speed:4.2s;--float-distance:-14px">Machine Learning</span>
+              <span class="skill-node" style="--float-speed:3.8s;--float-distance:11px">Pandas</span>
+              <span class="skill-node" style="--float-speed:4.5s;--float-distance:-9px">NumPy</span>
+              <span class="skill-node" style="--float-speed:3.2s;--float-distance:13px">Data Analytics</span>
+              <span class="skill-node lg" style="--float-speed:4.8s;--float-distance:-16px">NLP</span>
+              <span class="skill-node" style="--float-speed:3.6s;--float-distance:7px">Scikit-learn</span>
+              <span class="skill-node" style="--float-speed:4.1s;--float-distance:-11px">TensorFlow</span>
+              <span class="skill-node lg" style="--float-speed:5.2s;--float-distance:14px">RAG</span>
+              <span class="skill-node" style="--float-speed:3.9s;--float-distance:-10px">LangChain</span>
+              <span class="skill-node" style="--float-speed:4.3s;--float-distance:12px">Vector Databases</span>
+              <span class="skill-node" style="--float-speed:3.4s;--float-distance:-13px">Embeddings</span>
+              <span class="skill-node" style="--float-speed:4.7s;--float-distance:8px">RAG Fusion</span>
+              <span class="skill-node" style="--float-speed:3.7s;--float-distance:-7px">Query Routing</span>
+              <span class="skill-node" style="--float-speed:4.4s;--float-distance:15px">RAPTOR</span>
+              <span class="skill-node" style="--float-speed:3.3s;--float-distance:-12px">ColBERT</span>
+              <span class="skill-node" style="--float-speed:4.6s;--float-distance:9px">Prompt Engineering</span>
+              <span class="skill-node" style="--float-speed:3.1s;--float-distance:-8px">Pydantic</span>
+              <span class="skill-node" style="--float-speed:4.3s;--float-distance:11px">Chunking Strategies</span>
+              <span class="skill-node" style="--float-speed:3.6s;--float-distance:-9px">Semantic Search</span>
+              <span class="skill-node" style="--float-speed:4.1s;--float-distance:13px">Hybrid Search</span>
+              <span class="skill-node" style="--float-speed:3.8s;--float-distance:-11px">Re-Ranking</span>
+              <span class="skill-node" style="--float-speed:4.5s;--float-distance:7px">Multi-Query RAG</span>
+              <span class="skill-node" style="--float-speed:3.4s;--float-distance:-15px">Agentic RAG</span>
+              <span class="skill-node" style="--float-speed:4.2s;--float-distance:10px">Query Construction</span>
+              <span class="skill-node" style="--float-speed:3.7s;--float-distance:-8px">Document Loaders</span>
+              <span class="skill-node" style="--float-speed:3.5s;--float-distance:10px">Data Structures</span>
+              <span class="skill-node" style="--float-speed:4.0s;--float-distance:-14px">Algorithms</span>
             </div>
           </div>
-          <div class="glass-card skill-category animate-on-scroll">
-            <div class="skill-category-icon">
-              <i class="fa-solid fa-users"></i>
+          <div class="skill-orbit animate-on-scroll" data-stagger="1">
+            <h3 class="orbit-label"><i class="fa-solid fa-screwdriver-wrench"></i> Tools & Platforms</h3>
+            <div class="skill-cloud">
+              <span class="skill-node" style="--float-speed:3.5s;--float-distance:10px">Tableau</span>
+              <span class="skill-node" style="--float-speed:4.2s;--float-distance:-12px">Power BI</span>
+              <span class="skill-node" style="--float-speed:3.8s;--float-distance:8px">Looker</span>
+              <span class="skill-node" style="--float-speed:4.5s;--float-distance:-14px">Git</span>
+              <span class="skill-node" style="--float-speed:3.2s;--float-distance:11px">Google Colab</span>
+              <span class="skill-node" style="--float-speed:4.8s;--float-distance:-9px">Jupyter Notebook</span>
+              <span class="skill-node" style="--float-speed:3.6s;--float-distance:13px">Docker</span>
+              <span class="skill-node" style="--float-speed:4.1s;--float-distance:-7px">Kubernetes</span>
+              <span class="skill-node" style="--float-speed:3.4s;--float-distance:15px">PostgreSQL</span>
+              <span class="skill-node" style="--float-speed:4.3s;--float-distance:-10px">MySQL</span>
+              <span class="skill-node" style="--float-speed:3.9s;--float-distance:12px">ChromaDB</span>
             </div>
-            <h3>Soft Skills</h3>
-            <div class="skill-pills">
-              <span class="skill-pill">Leadership</span>
-              <span class="skill-pill">Teamwork</span>
-              <span class="skill-pill">Communication</span>
-              <span class="skill-pill">Time Management</span>
-              <span class="skill-pill">Problem Solving</span>
+          </div>
+          <div class="skill-orbit animate-on-scroll" data-stagger="2">
+            <h3 class="orbit-label"><i class="fa-solid fa-users"></i> Soft Skills</h3>
+            <div class="skill-cloud">
+              <span class="skill-node" style="--float-speed:3.5s;--float-distance:10px">Leadership</span>
+              <span class="skill-node" style="--float-speed:4.2s;--float-distance:-12px">Teamwork</span>
+              <span class="skill-node" style="--float-speed:3.8s;--float-distance:8px">Communication</span>
+              <span class="skill-node" style="--float-speed:4.5s;--float-distance:-14px">Time Management</span>
+              <span class="skill-node" style="--float-speed:3.2s;--float-distance:11px">Problem Solving</span>
             </div>
           </div>
         </div>
@@ -761,102 +788,125 @@
 
     <!-- ═══════════════════ CERTIFICATES ═══════════════════ -->
     <section id="certificates" class="certificates">
+      <div class="section-mesh"></div>
       <div class="container">
         <div class="section-header animate-on-scroll">
+          <span class="section-tag">Credentials</span>
           <h2 class="section-title">
             Certificates & <span class="accent">Achievements</span>
           </h2>
-          <p class="section-subtitle">
-            Continuous learning and professional development
-          </p>
         </div>
         <div class="certificates-grid">
-          <div class="glass-card cert-card animate-on-scroll">
+          <div class="glass-card cert-card animate-on-scroll" data-stagger="0">
             <i class="fa-solid fa-award cert-icon"></i>
-            <h4>Automation and AI Agent Training Course</h4>
-            <p class="text-muted">Robotna · Sep 2025</p>
+            <div>
+              <h4>Automation and AI Agent Training Course</h4>
+              <p class="text-muted">Robotna · Sep 2025</p>
+            </div>
           </div>
-          <div class="glass-card cert-card animate-on-scroll">
+          <div class="glass-card cert-card animate-on-scroll" data-stagger="1">
             <i class="fa-solid fa-award cert-icon"></i>
-            <h4>IC3 Digital Literacy Certification</h4>
-            <p class="text-muted">Certiport · May 2025</p>
+            <div>
+              <h4>IC3 Digital Literacy Certification</h4>
+              <p class="text-muted">Certiport · May 2025</p>
+            </div>
           </div>
-          <div class="glass-card cert-card animate-on-scroll">
+          <div class="glass-card cert-card animate-on-scroll" data-stagger="2">
             <i class="fa-solid fa-award cert-icon"></i>
-            <h4>Tech for Jobs Advanced Data Analytics Program</h4>
-            <p class="text-muted">Correlation One · Mar 2025</p>
+            <div>
+              <h4>Tech for Jobs Advanced Data Analytics Program</h4>
+              <p class="text-muted">Correlation One · Mar 2025</p>
+            </div>
           </div>
-          <div class="glass-card cert-card animate-on-scroll">
+          <div class="glass-card cert-card animate-on-scroll" data-stagger="3">
             <i class="fa-solid fa-award cert-icon"></i>
-            <h4>The Data Science Course: Complete Bootcamp 2024</h4>
-            <p class="text-muted">Udemy/365 Careers · Jul 2024</p>
+            <div>
+              <h4>The Data Science Course: Complete Bootcamp 2024</h4>
+              <p class="text-muted">Udemy/365 Careers · Jul 2024</p>
+            </div>
           </div>
-          <div class="glass-card cert-card animate-on-scroll">
+          <div class="glass-card cert-card animate-on-scroll" data-stagger="4">
             <i class="fa-solid fa-award cert-icon"></i>
-            <h4>Machine Learning</h4>
-            <p class="text-muted">Simplilearn · Aug 2023</p>
+            <div>
+              <h4>Machine Learning</h4>
+              <p class="text-muted">Simplilearn · Aug 2023</p>
+            </div>
           </div>
-          <div class="glass-card cert-card animate-on-scroll">
+          <div class="glass-card cert-card animate-on-scroll" data-stagger="5">
             <i class="fa-solid fa-award cert-icon"></i>
-            <h4>Machine Learning Part 2</h4>
-            <p class="text-muted">Unihance · Jul 2023</p>
+            <div>
+              <h4>Machine Learning Part 2</h4>
+              <p class="text-muted">Unihance · Jul 2023</p>
+            </div>
           </div>
         </div>
         <div class="cert-toggle-container animate-on-scroll">
-          <button id="cert-toggle-btn" class="btn btn-outline">
+          <button id="cert-toggle-btn" class="btn btn-outline magnetic">
             <i class="fa-solid fa-chevron-down"></i> Show 7 More
           </button>
         </div>
         <div class="certificates-grid certificates-hidden" id="cert-hidden">
           <div class="glass-card cert-card animate-on-scroll">
             <i class="fa-solid fa-award cert-icon"></i>
-            <h4>Statistics for Data Science and AI</h4>
-            <p class="text-muted">Unihance · Jul 2023</p>
+            <div>
+              <h4>Statistics for Data Science and AI</h4>
+              <p class="text-muted">Unihance · Jul 2023</p>
+            </div>
           </div>
           <div class="glass-card cert-card animate-on-scroll">
             <i class="fa-solid fa-award cert-icon"></i>
-            <h4>Machine Learning Part 1</h4>
-            <p class="text-muted">Unihance · Jun 2023</p>
+            <div>
+              <h4>Machine Learning Part 1</h4>
+              <p class="text-muted">Unihance · Jun 2023</p>
+            </div>
           </div>
           <div class="glass-card cert-card animate-on-scroll">
             <i class="fa-solid fa-award cert-icon"></i>
-            <h4>Modelling in Data Science</h4>
-            <p class="text-muted">Unihance · Apr 2023</p>
+            <div>
+              <h4>Modelling in Data Science</h4>
+              <p class="text-muted">Unihance · Apr 2023</p>
+            </div>
           </div>
           <div class="glass-card cert-card animate-on-scroll">
             <i class="fa-solid fa-award cert-icon"></i>
-            <h4>Statistics for Business Analytics & Data Science</h4>
-            <p class="text-muted">Unihance · Jan 2023</p>
+            <div>
+              <h4>Statistics for Business Analytics & Data Science</h4>
+              <p class="text-muted">Unihance · Jan 2023</p>
+            </div>
           </div>
           <div class="glass-card cert-card animate-on-scroll">
             <i class="fa-solid fa-award cert-icon"></i>
-            <h4>Python For Data Science (Part 2)</h4>
-            <p class="text-muted">Unihance · Jul 2022</p>
+            <div>
+              <h4>Python For Data Science (Part 2)</h4>
+              <p class="text-muted">Unihance · Jul 2022</p>
+            </div>
           </div>
           <div class="glass-card cert-card animate-on-scroll">
             <i class="fa-solid fa-award cert-icon"></i>
-            <h4>Python For Data Science (Part 1)</h4>
-            <p class="text-muted">Unihance · Jun 2022</p>
+            <div>
+              <h4>Python For Data Science (Part 1)</h4>
+              <p class="text-muted">Unihance · Jun 2022</p>
+            </div>
           </div>
           <div class="glass-card cert-card animate-on-scroll">
             <i class="fa-solid fa-award cert-icon"></i>
-            <h4>Introduction to Artificial Intelligence</h4>
-            <p class="text-muted">Unihance · Jun 2022</p>
+            <div>
+              <h4>Introduction to Artificial Intelligence</h4>
+              <p class="text-muted">Unihance · Jun 2022</p>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ═══════════════════ CONTACT ═══════════════════ -->
-    <section id="contact" class="contact section-alt">
+    <section id="contact" class="contact">
       <div class="container">
         <div class="section-header animate-on-scroll">
+          <span class="section-tag">Reach Out</span>
           <h2 class="section-title">
             Get In <span class="accent">Touch</span>
           </h2>
-          <p class="section-subtitle">
-            Let's collaborate on your next data science or AI project
-          </p>
         </div>
         <div class="contact-grid">
           <div class="contact-info animate-on-scroll">
@@ -928,7 +978,7 @@
                 required
                 rows="5"
               ></textarea>
-              <button type="submit" class="btn btn-primary btn-full">
+              <button type="submit" class="btn btn-primary btn-full magnetic">
                 <i class="fa-solid fa-paper-plane"></i> Send Message
               </button>
             </form>
@@ -950,21 +1000,24 @@
               href="https://github.com/Abdelrahman-Kanakri/"
               target="_blank"
               aria-label="GitHub"
+              class="magnetic"
               ><i class="fa-brands fa-github"></i
             ></a>
             <a
               href="https://www.linkedin.com/in/abdelrahman-kanakri-909654247/"
               target="_blank"
               aria-label="LinkedIn"
+              class="magnetic"
               ><i class="fa-brands fa-linkedin-in"></i
             ></a>
             <a
               href="https://www.kaggle.com/aboodai"
               target="_blank"
               aria-label="Kaggle"
+              class="magnetic"
               ><i class="fa-brands fa-kaggle"></i
             ></a>
-            <a href="mailto:abdelrahamankanakrik@gmail.com" aria-label="Email"
+            <a href="mailto:abdelrahamankanakrik@gmail.com" aria-label="Email" class="magnetic"
               ><i class="fa-solid fa-envelope"></i
             ></a>
           </div>

@@ -1,12 +1,73 @@
 // ══════════════════════════════════════════════════
-//  PORTFOLIO — Main JavaScript
+//  PORTFOLIO — Main JavaScript (Modern Redesign)
 // ══════════════════════════════════════════════════
 
-// ─── Navbar shadow on scroll ─────────────────────
+// ─── Custom Cursor ──────────────────────────────
+const cursorDot = document.getElementById("cursor-dot");
+const cursorRing = document.getElementById("cursor-ring");
+let mouseX = 0, mouseY = 0;
+let ringX = 0, ringY = 0;
+
+document.addEventListener("mousemove", (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+  cursorDot.style.left = mouseX + "px";
+  cursorDot.style.top = mouseY + "px";
+});
+
+function animateCursorRing() {
+  ringX += (mouseX - ringX) * 0.15;
+  ringY += (mouseY - ringY) * 0.15;
+  cursorRing.style.left = ringX + "px";
+  cursorRing.style.top = ringY + "px";
+  requestAnimationFrame(animateCursorRing);
+}
+animateCursorRing();
+
+// Cursor hover state on interactive elements
+const hoverTargets = document.querySelectorAll("a, button, .filter-btn, .btn, .badge, .skill-node, .project-card");
+hoverTargets.forEach((el) => {
+  el.addEventListener("mouseenter", () => {
+    cursorDot.classList.add("hovering");
+    cursorRing.classList.add("hovering");
+  });
+  el.addEventListener("mouseleave", () => {
+    cursorDot.classList.remove("hovering");
+    cursorRing.classList.remove("hovering");
+  });
+});
+
+// ─── Magnetic Effect ────────────────────────────
+const magneticEls = document.querySelectorAll(".magnetic");
+
+magneticEls.forEach((el) => {
+  el.addEventListener("mousemove", (e) => {
+    const rect = el.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    el.style.transform = `translate(${x * 0.25}px, ${y * 0.25}px)`;
+  });
+  el.addEventListener("mouseleave", () => {
+    el.style.transform = "";
+  });
+});
+
+// ─── Scroll Progress Bar ────────────────────────
+const scrollProgress = document.getElementById("scroll-progress");
+
+function updateScrollProgress() {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+  scrollProgress.style.width = progress + "%";
+}
+window.addEventListener("scroll", updateScrollProgress, { passive: true });
+
+// ─── Navbar shadow on scroll ────────────────────
 const navbar = document.getElementById("navbar");
 window.addEventListener("scroll", () => {
   navbar.classList.toggle("scrolled", window.scrollY > 50);
-});
+}, { passive: true });
 
 // ─── Mobile menu toggle ─────────────────────────
 const navToggle = document.querySelector(".nav-toggle");
@@ -19,7 +80,6 @@ navToggle.addEventListener("click", () => {
   icon.classList.toggle("fa-xmark");
 });
 
-// Close mobile menu when a link is clicked
 navLinks.querySelectorAll("a").forEach((link) => {
   link.addEventListener("click", () => {
     navLinks.classList.remove("open");
@@ -29,40 +89,44 @@ navLinks.querySelectorAll("a").forEach((link) => {
   });
 });
 
-// ─── Smooth scroll for anchor links ──────────────
+// ─── Smooth scroll for anchor links ─────────────
 document.querySelectorAll('a[href^="#"]').forEach((link) => {
   link.addEventListener("click", (e) => {
     e.preventDefault();
-    const targetId = link.getAttribute("href");
-    const target = document.querySelector(targetId);
+    const target = document.querySelector(link.getAttribute("href"));
     if (target) {
       target.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   });
 });
 
-// ─── Active nav highlighting ─────────────────────
+// ─── Active nav + side dot highlighting ─────────
 const sections = document.querySelectorAll("section[id]");
 const navItems = document.querySelectorAll(".nav-links a");
+const sideDots = document.querySelectorAll(".side-dot");
 
 const sectionObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
+        const id = entry.target.id;
+        // Top nav
         navItems.forEach((a) => a.classList.remove("active"));
-        const activeLink = document.querySelector(
-          `.nav-links a[href="#${entry.target.id}"]`,
-        );
-        if (activeLink) activeLink.classList.add("active");
+        const activeNav = document.querySelector(`.nav-links a[href="#${id}"]`);
+        if (activeNav) activeNav.classList.add("active");
+        // Side dots
+        sideDots.forEach((d) => d.classList.remove("active"));
+        const activeDot = document.querySelector(`.side-dot[href="#${id}"]`);
+        if (activeDot) activeDot.classList.add("active");
       }
     });
   },
-  { threshold: 0.35 },
+  { threshold: 0.3 },
 );
 
 sections.forEach((s) => sectionObserver.observe(s));
 
-// ─── Scroll-triggered animations ─────────────────
+// ─── Scroll-triggered animations (staggered) ───
 const animateOnScroll = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
@@ -71,14 +135,91 @@ const animateOnScroll = new IntersectionObserver(
       }
     });
   },
-  { threshold: 0.08, rootMargin: "0px 0px -40px 0px" },
+  { threshold: 0.06, rootMargin: "0px 0px -30px 0px" },
 );
 
 document.querySelectorAll(".animate-on-scroll").forEach((el) => {
   animateOnScroll.observe(el);
 });
 
-// ─── Project Filtering ───────────────────────────
+// ─── Hero: Split Character Animation ────────────
+function splitChars() {
+  document.querySelectorAll(".split-chars").forEach((el) => {
+    const text = el.textContent;
+    const baseDelay = parseInt(el.dataset.delay) || 0;
+    el.textContent = "";
+    el.style.opacity = "1";
+
+    [...text].forEach((char, i) => {
+      const span = document.createElement("span");
+      span.className = "char";
+      span.textContent = char === " " ? "\u00A0" : char;
+      span.style.animationDelay = baseDelay + i * 40 + "ms";
+      el.appendChild(span);
+    });
+  });
+}
+splitChars();
+
+// ─── Hero: Typewriter Effect ────────────────────
+function typewriter() {
+  const el = document.querySelector(".typewriter");
+  if (!el) return;
+  const text = el.dataset.text;
+  let i = 0;
+
+  function type() {
+    if (i <= text.length) {
+      el.textContent = text.slice(0, i);
+      i++;
+      setTimeout(type, 60);
+    }
+  }
+  // Start after name animation finishes
+  setTimeout(type, 1200);
+}
+typewriter();
+
+// ─── Hero: Stagger Reveal ───────────────────────
+document.querySelectorAll(".stagger-reveal").forEach((el) => {
+  const delay = parseInt(el.dataset.delay) || 0;
+  setTimeout(() => {
+    el.classList.add("visible");
+  }, delay);
+});
+
+// ─── 3D Tilt Effect on Project Cards ────────────
+const tiltCards = document.querySelectorAll(".tilt-card");
+
+tiltCards.forEach((card) => {
+  card.addEventListener("mousemove", (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    const rotateX = ((y - centerY) / centerY) * -6;
+    const rotateY = ((x - centerX) / centerX) * 6;
+
+    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+
+    // Update spotlight position
+    const spotlight = card.querySelector(".card-spotlight");
+    if (spotlight) {
+      const percentX = (x / rect.width) * 100;
+      const percentY = (y / rect.height) * 100;
+      spotlight.style.setProperty("--mouse-x", percentX + "%");
+      spotlight.style.setProperty("--mouse-y", percentY + "%");
+    }
+  });
+
+  card.addEventListener("mouseleave", () => {
+    card.style.transform = "";
+  });
+});
+
+// ─── Project Filtering ──────────────────────────
 const filterBtns = document.querySelectorAll(".filter-btn");
 const projectCards = document.querySelectorAll(".project-card");
 
@@ -86,11 +227,9 @@ filterBtns.forEach((btn) => {
   btn.addEventListener("click", () => {
     const category = btn.getAttribute("data-category");
 
-    // Update active button
     filterBtns.forEach((b) => b.classList.remove("active"));
     btn.classList.add("active");
 
-    // Filter cards — only animate cards that were previously hidden
     projectCards.forEach((card) => {
       const tags = card.getAttribute("data-tags") || "";
       const show = category === "all" || tags.includes(category);
@@ -99,7 +238,6 @@ filterBtns.forEach((btn) => {
       if (show) {
         card.style.display = "";
         if (wasHidden) {
-          // Only fade in cards that are newly appearing
           card.classList.remove("visible");
           requestAnimationFrame(() => {
             requestAnimationFrame(() => {
@@ -114,19 +252,17 @@ filterBtns.forEach((btn) => {
   });
 });
 
-// ─── Certificates "Show More" toggle ─────────────
+// ─── Certificates "Show More" toggle ────────────
 const certToggleBtn = document.getElementById("cert-toggle-btn");
 const certHidden = document.getElementById("cert-hidden");
 
 if (certToggleBtn && certHidden) {
   certToggleBtn.addEventListener("click", () => {
     const isVisible = certHidden.classList.toggle("show");
-    const icon = certToggleBtn.querySelector("i");
 
     if (isVisible) {
       certToggleBtn.innerHTML =
         '<i class="fa-solid fa-chevron-up"></i> Show Less';
-      // Animate newly visible cards
       certHidden.querySelectorAll(".animate-on-scroll").forEach((el) => {
         animateOnScroll.observe(el);
       });
@@ -137,7 +273,7 @@ if (certToggleBtn && certHidden) {
   });
 }
 
-// ─── Contact Form with Fetch ─────────────────────
+// ─── Contact Form with Fetch ────────────────────
 const form = document.getElementById("contact-form");
 
 if (form) {
@@ -156,7 +292,7 @@ if (form) {
       });
 
       if (response.ok) {
-        showFormMessage("Message sent successfully! ✓", "success");
+        showFormMessage("Message sent successfully!", "success");
         form.reset();
       } else {
         showFormMessage("Something went wrong. Please try again.", "error");
@@ -171,7 +307,6 @@ if (form) {
 }
 
 function showFormMessage(msg, type) {
-  // Remove any existing message
   const existing = form.querySelector(".form-message");
   if (existing) existing.remove();
 
