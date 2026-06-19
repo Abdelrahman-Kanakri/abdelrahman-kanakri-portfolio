@@ -95,10 +95,6 @@
     "mtime": 1781412330.0996547,
     "hash": "712ccc14ea7c6808541ce79ae36cc6c7"
   },
-  "/home/abood/Documents/Obsidian Vault/Claude-Brain/graphify-vault-cwd-and-obsidian-exclusion.md": {
-    "mtime": 1781412342.4967425,
-    "hash": "507b43258c37d2c3556ed78aea72a130"
-  },
   "/home/abood/Documents/Obsidian Vault/Claude-Brain/Project - Student Car Plate Detection.md": {
     "mtime": 1781412756.9549108,
     "hash": "9e74a87ef1983e8bc871cf7429cec03f"
@@ -107,17 +103,53 @@
     "mtime": 1781439471.6190553,
     "hash": "323e3d7267021b176f04a3c20d47a257"
   },
-  "/home/abood/Documents/Obsidian Vault/Claude-Brain/MEMORY.md": {
-    "mtime": 1781593735.938127,
-    "hash": "b856d4d6290ef297fa357f4ffad47b34"
-  },
   "/home/abood/Documents/Obsidian Vault/Claude-Brain/vscode-terminal-cwd-prompt.md": {
     "mtime": 1781595957.0970426,
     "hash": "7304926434b3cfb2a0ffad1198ec4d8e"
   },
+  "/home/abood/Documents/Obsidian Vault/Claude-Brain/meshcentral-lab-backup-and-restore.md": {
+    "mtime": 1781625791.3803377,
+    "hash": "09d6c0769ee3832c35a2c989920c4f06"
+  },
+  "/home/abood/Documents/Obsidian Vault/Claude-Brain/portfolio-site-project-cards.md": {
+    "mtime": 1781626476.9886425,
+    "hash": "4596ab98ef5adab716db8eea726d367f"
+  },
   "/home/abood/Documents/Obsidian Vault/Claude-Brain/rag-doc-qa-phase1-design.md": {
-    "mtime": 1781622703.81191,
-    "hash": "b6d05772ea5486ed01011799475cd37e"
+    "mtime": 1781716315.9334388,
+    "hash": "5d3f54d6e06407559f0111d30b792f9f"
+  },
+  "/home/abood/Documents/Obsidian Vault/Claude-Brain/gitlens-blame-annotations-above-code.md": {
+    "mtime": 1781712361.225146,
+    "hash": "195af87569c5889fad9cdddcd30af2d9"
+  },
+  "/home/abood/Documents/Obsidian Vault/Claude-Brain/rag-doc-qa-phase2-completion.md": {
+    "mtime": 1781849963.6814802,
+    "hash": "4bca868a915a9483146f986fca21c8da"
+  },
+  "/home/abood/Documents/Obsidian Vault/Claude-Brain/vscode-manage-extensions-cli.md": {
+    "mtime": 1781853067.5519998,
+    "hash": "7f3bc18d3e2233ff54a0422e6bce0644"
+  },
+  "/home/abood/Documents/Obsidian Vault/Claude-Brain/graphify-vault-cwd-and-obsidian-exclusion.md": {
+    "mtime": 1781867128.1885247,
+    "hash": "1669558b23a43e0f7f5cd4fb8dd9d187"
+  },
+  "/home/abood/Documents/Obsidian Vault/Claude-Brain/rag-doc-qa-phase4-docs-and-readme.md": {
+    "mtime": 1781874627.3977535,
+    "hash": "14295a59e96e425487a7ef61dd38d5a0"
+  },
+  "/home/abood/Documents/Obsidian Vault/Claude-Brain/MEMORY.md": {
+    "mtime": 1781874640.092837,
+    "hash": "021d2e99b40c68877c453f44761f8ac6"
+  },
+  "/home/abood/Documents/Obsidian Vault/Claude-Brain/rag-doc-qa-phase3-env-fixes.md": {
+    "mtime": 1781878740.7455928,
+    "hash": "462f06b0605b40f475070cefc5f640a3"
+  },
+  "/home/abood/Documents/Obsidian Vault/Claude-Brain/rag-doc-qa-phase4-dockerize-and-langsmith.md": {
+    "mtime": 1781878754.2166104,
+    "hash": "ebe72c9f3f0adb77287e2ee86cfbb607"
   },
   "/home/abood/Documents/Obsidian Vault/Claude-Brain/graphify-out/memory/query_20260605_141709_how_to_build_the_graph_using_the_subscription_inst.md": {
     "mtime": 1780669029.862959,

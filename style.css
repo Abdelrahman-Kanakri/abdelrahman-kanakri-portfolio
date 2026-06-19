@@ -1027,8 +1027,13 @@ section {
   z-index: 1;
 }
 
-.projects-toggle-container {
+/* Collapsed: show only the first 6 cards, button reveals the rest */
+.projects-grid.collapsed > .project-card:nth-of-type(n + 7) {
   display: none;
+}
+
+.projects-toggle-container {
+  display: block;
   text-align: center;
   margin-top: var(--space-lg);
   position: relative;

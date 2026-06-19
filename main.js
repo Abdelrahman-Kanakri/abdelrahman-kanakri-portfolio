@@ -224,6 +224,7 @@ const filterBtns = document.querySelectorAll(".filter-btn");
 const projectCards = document.querySelectorAll(".project-card");
 const projectsGrid = document.querySelector(".projects-grid");
 const projectToggleBtn = document.getElementById("project-toggle-btn");
+const projectToggleContainer = document.querySelector(".projects-toggle-container");
 
 function setProjectToggleLabel() {
   if (!projectToggleBtn || !projectsGrid) return;
@@ -240,8 +241,16 @@ filterBtns.forEach((btn) => {
     filterBtns.forEach((b) => b.classList.remove("active"));
     btn.classList.add("active");
 
-    if (category !== "all" && projectsGrid) {
-      projectsGrid.classList.remove("collapsed");
+    // The Show More / Show Less toggle only applies to the full "All" list;
+    // a category filter shows every match, so hide the toggle and expand.
+    if (projectsGrid) {
+      if (category === "all") {
+        projectsGrid.classList.add("collapsed");
+        if (projectToggleContainer) projectToggleContainer.style.display = "";
+      } else {
+        projectsGrid.classList.remove("collapsed");
+        if (projectToggleContainer) projectToggleContainer.style.display = "none";
+      }
       setProjectToggleLabel();
     }
 
