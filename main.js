@@ -306,7 +306,7 @@ if (certToggleBtn && certHidden) {
       });
     } else {
       certToggleBtn.innerHTML =
-        '<i class="fa-solid fa-chevron-down"></i> Show 7 More';
+        '<i class="fa-solid fa-chevron-down"></i> Show 14 More';
     }
   });
 }
