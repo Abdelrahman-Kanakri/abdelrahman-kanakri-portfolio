@@ -88,7 +88,7 @@ npx serve .
 
 ## 📬 Contact
 
-- **Email**: abdelrahamankanakrik@gmail.com
+- **Email**: a.b.kanakri@gmail.com
 - **LinkedIn**: [Abdelrahman Kanakri](https://www.linkedin.com/in/abdelrahman-kanakri-909654247/)
 - **GitHub**: [Abdelrahman-Kanakri](https://github.com/Abdelrahman-Kanakri/)
 - **Kaggle**: [aboodai](https://www.kaggle.com/aboodai)
