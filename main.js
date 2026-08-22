@@ -317,7 +317,6 @@ const certModalBackdrop = document.getElementById("cert-modal-backdrop");
 const certModalClose = document.getElementById("cert-modal-close");
 const certModalBody = document.getElementById("cert-modal-body");
 const certModalTitle = document.getElementById("cert-modal-title");
-const certModalDownload = document.getElementById("cert-modal-download");
 
 if (certModal) {
   let lastFocusedCert = null;
@@ -328,12 +327,7 @@ if (certModal) {
     if (!src) return;
 
     certModalTitle.textContent = title;
-    certModalDownload.href = card.dataset.certDownload || src;
-
-    const isImage = /\.(png|jpe?g|webp|gif)$/i.test(src);
-    certModalBody.innerHTML = isImage
-      ? `<img src="${src}" alt="${title}">`
-      : `<iframe src="${src}" title="${title}"></iframe>`;
+    certModalBody.innerHTML = `<img src="${src}" alt="${title}">`;
 
     lastFocusedCert = card;
     certModal.classList.add("open");
