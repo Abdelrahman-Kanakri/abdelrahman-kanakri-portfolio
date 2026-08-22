@@ -25,7 +25,7 @@ function animateCursorRing() {
 animateCursorRing();
 
 // Cursor hover state on interactive elements
-const hoverTargets = document.querySelectorAll("a, button, .filter-btn, .btn, .badge, .skill-node, .project-card");
+const hoverTargets = document.querySelectorAll("a, button, .filter-btn, .btn, .badge, .skill-node, .project-card, .cert-card");
 hoverTargets.forEach((el) => {
   el.addEventListener("mouseenter", () => {
     cursorDot.classList.add("hovering");
@@ -308,6 +308,60 @@ if (certToggleBtn && certHidden) {
       certToggleBtn.innerHTML =
         '<i class="fa-solid fa-chevron-down"></i> Show 14 More';
     }
+  });
+}
+
+// ─── Certificate Modal ───────────────────────────
+const certModal = document.getElementById("cert-modal");
+const certModalBackdrop = document.getElementById("cert-modal-backdrop");
+const certModalClose = document.getElementById("cert-modal-close");
+const certModalBody = document.getElementById("cert-modal-body");
+const certModalTitle = document.getElementById("cert-modal-title");
+const certModalDownload = document.getElementById("cert-modal-download");
+
+if (certModal) {
+  let lastFocusedCert = null;
+
+  function openCertModal(card) {
+    const src = card.dataset.cert;
+    const title = card.dataset.certTitle || "Certificate";
+    if (!src) return;
+
+    certModalTitle.textContent = title;
+    certModalDownload.href = card.dataset.certDownload || src;
+
+    const isImage = /\.(png|jpe?g|webp|gif)$/i.test(src);
+    certModalBody.innerHTML = isImage
+      ? `<img src="${src}" alt="${title}">`
+      : `<iframe src="${src}" title="${title}"></iframe>`;
+
+    lastFocusedCert = card;
+    certModal.classList.add("open");
+    document.body.style.overflow = "hidden";
+    certModalClose.focus();
+  }
+
+  function closeCertModal() {
+    certModal.classList.remove("open");
+    document.body.style.overflow = "";
+    certModalBody.innerHTML = "";
+    if (lastFocusedCert) lastFocusedCert.focus();
+  }
+
+  document.querySelectorAll(".cert-card[data-cert]").forEach((card) => {
+    card.addEventListener("click", () => openCertModal(card));
+    card.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        openCertModal(card);
+      }
+    });
+  });
+
+  certModalClose.addEventListener("click", closeCertModal);
+  certModalBackdrop.addEventListener("click", closeCertModal);
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && certModal.classList.contains("open")) closeCertModal();
   });
 }
 
